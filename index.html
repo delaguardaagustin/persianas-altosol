@@ -3,245 +3,537 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Altosol Persianas · Persianas exteriores en Peñalolén</title>
+<title>Altosol Persianas · Persianas exteriores de aluminio en Peñalolén</title>
 <meta name="description" content="Altosol Persianas: persianas exteriores de aluminio, manuales o motorizadas, para ventanas, puertas y terrazas en Peñalolén. 5,0 en Google con 13 opiniones.">
 <meta name="robots" content="noindex">
-<meta property="og:title" content="Altosol Persianas · Persianas exteriores en Peñalolén">
-<meta property="og:description" content="Altosol Persianas: persianas exteriores de aluminio, manuales o motorizadas, para ventanas, puertas y terrazas en Peñalolén. 5,0 en Google con 13 opiniones.">
+<meta property="og:title" content="Altosol Persianas · Persianas exteriores de aluminio en Peñalolén">
+<meta property="og:description" content="Persianas exteriores de aluminio, manuales o motorizadas, para ventanas, puertas y terrazas. 5,0 en Google con 13 opiniones.">
 <meta property="og:image" content="https://delaguardaagustin.github.io/persianas-altosol/assets/vista.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:url" content="https://delaguardaagustin.github.io/persianas-altosol/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#24211e">
+<meta name="theme-color" content="#171513">
 <link rel="icon" href="assets/icono.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,700;62..125,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script>document.documentElement.classList.add('js')</script>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400..600&family=Geist:wght@300..600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/p-hero.jpg">
+<script>document.documentElement.classList.add('js');setTimeout(function(){document.documentElement.classList.add('listo')},2600)</script>
+<!--
+  Versión premium (20-11-2026). Plan:
+  - Color: basalto #171513, grafito #24211e, marfil #ece6dc, niebla #a59c90, piedra #d8d2c7, champaña #c6a777.
+  - Tipos: Bodoni Moda (display, alto contraste, de revista de arquitectura) + Geist (texto, precisa como un perfil de aluminio).
+  - Momento propio: la persiana ES el efecto. Portada: la persiana sube al cargar y baja con el scroll.
+    Sección «Luz»: el scroll baja la persiana de una ventana y la luz del piso se achica hasta oscurecer la pieza (día / noche).
+    Sección «Motor»: un interruptor que se puede tocar mueve una persiana.
+-->
 <style>
-*{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{margin:0;overflow-x:hidden}
-img{max-width:100%;display:block}a{color:inherit}button,input,select,textarea{font:inherit}
-.i{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@property --rendija{syntax:'<length>';inherits:true;initial-value:0px}
+:root{
+  --basalto:#171513;--grafito:#24211e;--grafito-2:#2f2b27;--marfil:#ece6dc;--niebla:#a59c90;--piedra:#d8d2c7;--tinta:#1c1916;--tinta-suave:#4f4840;
+  --champana:#c6a777;--champana-claro:#dcc49b;--bronce:#7a5c33;--linea:rgba(236,230,220,.14);--linea-osc:rgba(28,25,22,.16);
+  --serif:"Bodoni Moda",ui-serif,Georgia,serif;--sans:"Geist",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);--alto-nav:72px;
+  /* variables que lee el asistente (asistente.css) */
+  --bg:#1f1c19;--surface:#2a2622;--text:#ece6dc;--muted:#a59c90;--accent:#c6a777;--line:rgba(236,230,220,.16);--font:var(--sans);--display:var(--serif);--asis-tone:#c6a777;--asis-on:#171513;--asis-radius:2px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;overflow-x:clip;scrollbar-color:#4a443d var(--basalto)}
+body{margin:0;overflow-x:clip;background:var(--basalto);color:var(--marfil);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}a{color:inherit}button,input,select,textarea{font:inherit;color:inherit}
+::selection{background:var(--champana);color:var(--basalto)}
+:focus-visible{outline:2px solid var(--champana);outline-offset:3px}
+.i{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-:focus-visible{outline:3px solid var(--c2);outline-offset:2px}
-.barra-movil{display:none}
-@media (max-width:760px){.barra-movil{position:fixed;left:0;right:0;bottom:0;z-index:60;display:grid;grid-template-columns:1fr 1fr;box-shadow:0 -8px 24px -12px rgba(0,0,0,.35)}
- .barra-movil a{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;font-weight:700;text-decoration:none;color:#fff;background:var(--c1)}
- .barra-movil a.wa{background:#1f7a46}body{padding-bottom:56px}}
-.fab{position:fixed;right:18px;bottom:18px;z-index:59;display:inline-flex;align-items:center;gap:10px;background:var(--c1);color:#fff;text-decoration:none;font-weight:700;font-size:.92rem;padding:12px 18px 12px 14px;border-radius:999px;box-shadow:0 14px 30px -12px rgba(0,0,0,.55)}
-.fab .i{width:24px;height:24px}
-@media (max-width:760px){.fab{bottom:68px;right:12px;padding:11px 14px}.fab .fab-txt{display:none}}
-.campo{display:grid;gap:6px;font-weight:600;font-size:.92rem}
-.campo input,.campo select,.campo textarea{width:100%;min-height:48px;padding:11px 13px;border-radius:12px;border:1px solid rgba(0,0,0,.18);background:#fff;color:#1b1b1f;font-size:1rem}
-.campo textarea{min-height:92px;resize:vertical}
-.aviso-f{min-height:1.2em;margin:0;color:#a3122a;font-weight:600;font-size:.9rem}
-.reveal{opacity:1}.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}.js .reveal.visto{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+.saltar{position:absolute;left:12px;top:-60px;z-index:100;background:var(--champana);color:var(--basalto);padding:10px 16px;font-weight:600;text-decoration:none}.saltar:focus{top:12px}
+.wrap{width:min(1240px,100% - 40px);margin-inline:auto}
+section{position:relative}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;line-height:1.02;letter-spacing:-.02em;text-wrap:balance}
+h2{font-size:clamp(2.4rem,5.6vw,4.6rem)}
+h3{font-size:clamp(1.5rem,2.4vw,2rem)}
+p{margin:0}
+.lead{color:var(--niebla);max-width:48ch;font-size:1.06rem}
+.ln{display:block}
 
-:root{--c1:#24211e;--c2:#a6542a;--c3:#efe8dd;--grafito:#3c3935;--tinta:#1d1b19;--suave:#625b53;--linea:#ddd3c4}
-body{font:400 17px/1.6 "Hanken Grotesk",system-ui,sans-serif;color:var(--tinta);background:#f8f5f0}
-h1,h2,h3{font-family:"Archivo",system-ui,sans-serif;font-stretch:78%;font-weight:800;line-height:.98;margin:0;color:var(--c1);letter-spacing:-.01em;text-transform:uppercase}
-h2{font-size:clamp(2.2rem,5.4vw,3.8rem)}h1 span,h2 span{color:var(--c2)}h3{font-size:1.45rem}
-.wrap{width:min(1200px,100% - 36px);margin:0 auto}section{padding:88px 0}
-.eti{display:inline-flex;align-items:center;gap:8px;font:700 .78rem/1 "Archivo",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--c2);margin-bottom:16px}.eti .i{width:16px;height:16px}
-header{position:sticky;top:0;z-index:50;background:rgba(248,245,240,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
-.marca{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--c1)}
-.marca .sello{width:44px;height:44px;background:var(--c1);color:#f3d2b8;display:grid;place-items:center;border-radius:4px}
-.marca b{display:block;font:800 1.3rem/1 "Archivo",sans-serif;font-stretch:78%;text-transform:uppercase;letter-spacing:.02em}.marca small{display:block;font-size:.78rem;color:var(--suave);margin-top:4px}
-.menu{display:flex;gap:26px}.menu a{text-decoration:none;color:var(--suave);font-weight:600}.menu a:hover{color:var(--c1)}
-@media (max-width:940px){.menu{display:none}}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:52px;padding:0 22px;border-radius:4px;font-weight:700;text-decoration:none;border:2px solid var(--c1);color:var(--c1);background:transparent;cursor:pointer;transition:transform .15s}
-.btn:hover{transform:translateY(-2px)}.btn-p{background:var(--c1);color:#fff}.btn-wa{background:#1f7a46;border-color:#1f7a46;color:#fff}.btn-o{background:#fff}
-@media (max-width:520px){.nav .btn{display:none}}
-.portada{padding:0;background:var(--c1);color:#e9e2d8;overflow:hidden}
-.portada .grid{display:grid;grid-template-columns:1fr 1.1fr;min-height:min(86vh,760px)}
-.portada .txt{padding:72px 48px 72px max(18px,calc((100vw - 1200px)/2));display:flex;flex-direction:column;justify-content:center}
-.portada h1{color:#fff;font-size:clamp(2.8rem,6.6vw,5.6rem)}.portada h1 span{color:#e59a6c}
-.portada .baja{font-size:1.15rem;max-width:42ch;margin:22px 0 30px;color:#cfc6ba}
-.portada .btn-o{background:transparent;color:#fff;border-color:#fff}
-.acciones{display:flex;flex-wrap:wrap;gap:12px}
-.datos{display:flex;flex-wrap:wrap;gap:10px 26px;margin:34px 0 0;padding:22px 0 0;border-top:1px solid rgba(255,255,255,.16);list-style:none}
-.datos li{display:flex;align-items:center;gap:8px}.datos b{color:#fff}.datos .i{color:#e59a6c}
-.ventana{position:relative;overflow:hidden;min-height:420px}
-.ventana img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.lamas{position:absolute;inset:0;z-index:2;background:repeating-linear-gradient(180deg,#5a3a24 0 22px,#3e2716 22px 25px);box-shadow:inset 0 -14px 18px rgba(0,0,0,.35);transform:translateY(0);animation:subir 2.2s cubic-bezier(.6,.05,.25,1) .5s forwards}
-.lamas::after{content:"";position:absolute;left:0;right:0;bottom:0;height:16px;background:#2a1a10}
-@keyframes subir{to{transform:translateY(-101%)}}
-.ventana .caja{position:absolute;top:0;left:0;right:0;height:18px;background:#2a1a10;z-index:3}
-@media (prefers-reduced-motion:reduce){.lamas{display:none}}
-@media (max-width:900px){.portada .grid{grid-template-columns:1fr}.portada .txt{padding:56px 18px}.ventana{min-height:340px}}
-.cab{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 40px;margin-bottom:42px}.cab p{max-width:46ch;color:var(--suave);margin:0}
-.servs{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--c1)}
-.serv{padding:28px 24px 26px 0;display:flex;flex-direction:column;gap:12px;border-right:1px solid var(--linea);padding-left:22px}
-.serv:first-child{padding-left:0}.serv:last-child{border-right:0}
-.serv .ico{color:var(--c2)}.serv .ico .i{width:34px;height:34px}
-.serv p{margin:0;color:var(--suave);flex:1}.serv a{color:var(--c1);font-weight:700;text-decoration:none;display:inline-flex;gap:6px;align-items:center;border-bottom:2px solid var(--c2);align-self:flex-start;padding-bottom:2px}
-@media (max-width:980px){.servs{grid-template-columns:1fr 1fr}.serv{border-right:0;border-bottom:1px solid var(--linea);padding-left:0!important;padding-right:14px}}
-@media (max-width:560px){.servs{grid-template-columns:1fr}}
-.muestrario{background:var(--c3)}
-.mgrid{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
-.mfoto{margin:0;position:relative}.mfoto img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;box-shadow:0 30px 50px -30px rgba(36,33,30,.6)}
-.mfoto figcaption{position:absolute;left:14px;bottom:14px;background:var(--c1);color:#fff;font:700 .9rem "Archivo",sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:9px 14px;border-radius:3px}
-.colores{display:grid;gap:10px;margin-top:22px}
-.colores button{display:flex;align-items:center;gap:14px;width:100%;padding:12px 14px;border-radius:4px;border:1px solid var(--linea);background:#fff;cursor:pointer;text-align:left;font-weight:600;color:var(--tinta);min-height:56px}
-.colores button[aria-pressed=true]{border-color:var(--c1);box-shadow:inset 4px 0 0 var(--c2)}
-.colores .sw{width:44px;height:30px;border-radius:2px;flex:none;background-image:repeating-linear-gradient(180deg,rgba(255,255,255,.18) 0 2px,transparent 2px 7px)}
-.colores small{display:block;font-weight:400;color:var(--suave)}
-@media (max-width:860px){.mgrid{grid-template-columns:1fr}.mfoto img{aspect-ratio:1/1}}
-.motor{display:grid;grid-template-columns:.8fr 1.2fr;gap:44px;align-items:center}
-.motor img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:4px}
-.lista{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:14px}
-.lista li{display:flex;gap:12px;align-items:flex-start}.lista .i{color:var(--c2);margin-top:3px}
-@media (max-width:860px){.motor{grid-template-columns:1fr}.motor img{aspect-ratio:4/3}}
-.galeria{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.galeria img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:4px}
-@media (max-width:820px){.galeria{grid-template-columns:1fr 1fr}}
-.resgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.res{margin:0;background:#fff;border-left:4px solid var(--c2);padding:24px 24px 22px;display:flex;flex-direction:column;gap:12px}
-.res blockquote{margin:0;font-size:1.08rem;line-height:1.5}.res figcaption{color:var(--suave);font-size:.86rem;font-weight:600}
-.est{color:#8a5d00;letter-spacing:2px}@media (max-width:900px){.resgrid{grid-template-columns:1fr}}
-.cot{background:var(--c1);color:#d6cdc1}.cot h2{color:#fff}.cot .eti{color:#e59a6c}
-.cot .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:start}@media (max-width:880px){.cot .wrap{grid-template-columns:1fr}}
-.form{background:#fff;color:var(--tinta);border-radius:4px;padding:28px;display:grid;gap:14px}.form h3{font-size:1.5rem}.form small{color:var(--suave)}
-.form .btn-f{display:flex;align-items:center;justify-content:center;gap:9px;min-height:54px;border:0;border-radius:4px;background:#1f7a46;color:#fff;font-weight:700;cursor:pointer}
-.dosc{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media (max-width:520px){.dosc{grid-template-columns:1fr}}
-.hor{list-style:none;padding:0;margin:20px 0}.hor li{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.14)}.hor b{color:#fff}
-.faq{border-bottom:1px solid var(--linea)}.faq summary{cursor:pointer;list-style:none;padding:18px 34px 18px 0;font-weight:700;position:relative}
-.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";position:absolute;right:4px;top:12px;font-size:1.6rem;color:var(--c2)}
-.faq[open] summary::after{content:"–"}.faq p{margin:0 0 18px;color:var(--suave)}
-.faqwrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px}@media (max-width:860px){.faqwrap{grid-template-columns:1fr}}
-footer{background:#171513;color:#a99f92;font-size:.9rem;padding:30px 0}footer .wrap{display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between}footer a{color:#fff}
-</style>
-</head>
-<body>
+/* ---------- aluminio: láminas reutilizables ---------- */
+.lamas{--paso:22px;--l1:#6f6a63;--l2:#8a857d;--l3:#58534d;--l4:#3a3632;--l5:#211f1c;
+  background:repeating-linear-gradient(180deg,var(--l3) 0,var(--l2) calc(var(--paso)*.16),var(--l1) calc(var(--paso)*.34),var(--l3) calc(var(--paso)*.62),var(--l4) calc(var(--paso)*.86),var(--l5) calc(var(--paso)*.93),var(--l5) var(--paso));
+  -webkit-mask:repeating-linear-gradient(180deg,#000 0 calc(var(--paso) - var(--rendija)),transparent calc(var(--paso) - var(--rendija)) var(--paso));
+  mask:repeating-linear-gradient(180deg,#000 0 calc(var(--paso) - var(--rendija)),transparent calc(var(--paso) - var(--rendija)) var(--paso))}
+.contera{position:absolute;left:0;right:0;bottom:0;height:12px;background:linear-gradient(180deg,#8b857c,#4a4540 60%,#24211e);box-shadow:0 6px 14px -6px rgba(0,0,0,.7)}
+.cajon{position:absolute;left:0;right:0;top:0;height:clamp(22px,4.2%,40px);z-index:4;background:linear-gradient(180deg,#4a4540,#2b2825 70%,#1d1b18);border-bottom:1px solid rgba(198,167,119,.45);box-shadow:0 10px 20px -10px rgba(0,0,0,.8)}
 
-<style>
-.muestra{background:#0c0f12;color:#e9edf1;font:500 .86rem/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;border-bottom:1px solid #d8ac54}
+/* ---------- aviso de demo ---------- */
+.muestra{background:#0c0f12;color:#e9edf1;font:500 .86rem/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;border-bottom:1px solid #d8ac54;position:relative;z-index:55}
 .muestra div{width:min(1220px,100% - 28px);margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 18px;padding:9px 0;text-align:center}
 .muestra b{color:#d8ac54;font-weight:700}
 .muestra a{background:#d8ac54;color:#0c0f12;font-weight:700;text-decoration:none;border-radius:999px;padding:7px 15px;white-space:nowrap}
 .muestra a:hover{background:#e9c57a}
+
+/* ---------- cabecera ---------- */
+.top{position:sticky;top:0;z-index:50;background:rgba(23,21,19,.86);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--linea)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:var(--alto-nav)}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none}
+.marca svg{width:30px;height:30px;color:var(--champana)}
+.marca b{font:500 1.55rem/1 var(--serif);letter-spacing:-.01em}
+.menu{display:flex;gap:30px}
+.menu a{position:relative;text-decoration:none;font-size:.94rem;color:var(--niebla);padding:12px 0;transition:color .3s}
+.menu a::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:1px;background:var(--champana);transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
+.menu a:hover{color:var(--marfil)}.menu a:hover::after{transform:scaleX(1);transform-origin:left}
+@media (max-width:1000px){.menu{display:none}}
+
+/* ---------- botones ---------- */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:2px;font-weight:500;font-size:.98rem;text-decoration:none;cursor:pointer;border:1px solid transparent;overflow:hidden;isolation:isolate;transition:color .45s var(--ease),border-color .45s var(--ease),transform .2s}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;transform:scaleY(0);transform-origin:top;transition:transform .55s var(--ease)}
+.btn:hover::before{transform:scaleY(1)}
+.btn:active{transform:scale(.97)}
+.btn-p{background:var(--champana);color:var(--basalto)}.btn-p::before{background:var(--marfil)}
+.btn-o{border-color:rgba(236,230,220,.4);color:var(--marfil)}.btn-o::before{background:var(--marfil)}.btn-o:hover{color:var(--basalto);border-color:var(--marfil)}
+.btn-c{min-height:44px;padding:0 18px;border-color:rgba(198,167,119,.6);color:var(--champana-claro)}.btn-c::before{background:var(--champana)}.btn-c:hover{color:var(--basalto)}
+@media (max-width:520px){.nav .btn-c{display:none}}
+.acciones{display:flex;flex-wrap:wrap;gap:12px}
+
+/* ---------- portada ---------- */
+.hero{min-height:calc(100svh - var(--alto-nav));display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);background:var(--basalto);overflow:hidden}
+.hero-txt{display:flex;flex-direction:column;justify-content:flex-end;gap:28px;padding:clamp(40px,7vh,90px) clamp(28px,4vw,64px) clamp(36px,6vh,72px) max(20px,calc((100vw - 1240px)/2));position:relative;z-index:3}
+.hero h1{font-size:clamp(3rem,6.4vw,6rem);line-height:.96;letter-spacing:-.03em}
+.hero h1 [data-split]{display:block}
+.hero h1 .cat{display:block;font:500 .95rem/1.3 var(--sans);letter-spacing:.01em;color:var(--champana);margin-bottom:22px}
+.hero .lead{font-size:1.1rem;max-width:44ch}
+.datos{display:flex;flex-wrap:wrap;gap:10px 30px;margin:6px 0 0;padding:22px 0 0;border-top:1px solid var(--linea);list-style:none;font-size:.95rem;color:var(--niebla)}
+.datos li{display:flex;align-items:center;gap:9px}.datos b{color:var(--marfil);font-weight:500}.datos .i{color:var(--champana);width:18px;height:18px}
+.hero-win{position:relative;overflow:hidden;background:#0f0e0c}
+.hero-win img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 50%;transform-origin:50% 40%}
+.hero-win::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(23,21,19,.55),transparent 30%),linear-gradient(0deg,rgba(23,21,19,.35),transparent 30%)}
+.persiana-mov{position:absolute;inset:0;z-index:3;pointer-events:none}
+.persiana{position:absolute;inset:0;transform:translateY(-101%)}
+.persiana .lamas{position:absolute;inset:0 0 12px;--rendija:5px}
+.bajar-hint{position:absolute;right:max(20px,calc((100vw - 1240px)/2));bottom:28px;z-index:5;display:flex;align-items:center;gap:12px;font-size:.84rem;color:var(--marfil);text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.bajar-hint span{display:block;width:1px;height:46px;background:linear-gradient(var(--champana),transparent);position:relative;overflow:hidden}
+@media (prefers-reduced-motion:no-preference){
+  .hero .persiana{animation:enrollar 1.8s cubic-bezier(.72,0,.18,1) .95s both}
+  .hero .persiana .lamas{animation:rendijas .7s ease-out .2s both}
+  .hero-win img{animation:acercar 2.8s var(--ease) .5s both}
+  .bajar-hint span::after{content:"";position:absolute;left:0;top:-40%;width:1px;height:40%;background:var(--marfil);animation:gota 2.2s var(--ease) 3s infinite}
+}
+@keyframes enrollar{from{transform:translateY(0)}to{transform:translateY(-101%)}}
+@keyframes rendijas{from{--rendija:0px}to{--rendija:5px}}
+@keyframes acercar{from{transform:scale(1.14)}to{transform:scale(1)}}
+@keyframes gota{to{top:110%}}
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:calc(100svh - var(--alto-nav))}
+  .hero-win{position:absolute;inset:0;z-index:0}
+  .hero-win::after{background:linear-gradient(0deg,rgba(23,21,19,.97) 46%,rgba(23,21,19,.7) 66%,rgba(23,21,19,.12) 88%)}
+  .hero-txt{grid-row:1;padding:120px 20px 40px;gap:22px}
+  .hero h1{font-size:clamp(2.7rem,12vw,4rem)}
+  .bajar-hint{display:none}
+  .hero .acciones .btn{flex:1 1 100%}
+}
+
+/* ---------- luz ---------- */
+.luz{background:var(--grafito)}
+.luz-pin{min-height:100svh;display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:clamp(28px,5vw,80px);align-items:center;padding-block:clamp(28px,6vh,80px)}
+.luz h2{font-size:clamp(2.2rem,4.6vw,4rem)}
+.pasos{list-style:none;margin:30px 0 0;padding:0;display:grid}
+.pasos li{display:grid;grid-template-columns:110px 1fr;gap:4px 18px;padding:16px 0;border-top:1px solid var(--linea);opacity:.38;transition:opacity .5s var(--ease)}
+.pasos li:last-child{border-bottom:1px solid var(--linea)}
+.pasos li.activo{opacity:1}
+.pasos b{font:500 1.02rem/1.4 var(--sans);color:var(--champana)}
+.pasos p{color:var(--marfil);max-width:36ch}
+.luz-ctrl{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin-top:26px}
+.seg{display:inline-flex;border:1px solid var(--linea);border-radius:2px;padding:3px}
+.seg button{min-height:44px;min-width:76px;padding:0 16px;border:0;background:transparent;color:var(--niebla);cursor:pointer;border-radius:1px;transition:background .4s var(--ease),color .4s}
+.seg button[aria-pressed=true]{background:var(--marfil);color:var(--basalto)}
+.lectura{font-size:.95rem;color:var(--niebla)}.lectura b{font:400 1.7rem/1 var(--serif);color:var(--marfil);font-variant-numeric:tabular-nums;margin-right:2px}
+.escena{--p:0;position:relative;aspect-ratio:4/3;width:100%;overflow:hidden;border-radius:2px;background:#2b2722;isolation:isolate;box-shadow:0 40px 80px -40px rgba(0,0,0,.8)}
+.esc-pared{position:absolute;inset:0 0 30% 0;background:linear-gradient(180deg,#4a443c,#3a352f 70%,#332e29);transition:background 1s var(--ease)}
+.esc-piso{position:absolute;inset:70% 0 0 0;background:linear-gradient(180deg,#2b2621,#3a332b 70%,#40382f);transition:background 1s var(--ease)}
+.esc-piso::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 11.5%,rgba(0,0,0,.18) 11.5% 11.7%);transform:perspective(300px) rotateX(38deg);transform-origin:top;opacity:.7}
+.esc-zocalo{position:absolute;left:0;right:0;top:69.2%;height:.8%;background:#25211d}
+.esc-ventana{position:absolute;left:33%;top:12%;width:30%;height:46%;border:6px solid #8a837a;border-radius:1px;overflow:hidden;box-shadow:inset 0 0 0 1px #4e4943,0 14px 30px -12px rgba(0,0,0,.6);z-index:2}
+.esc-cielo{position:absolute;inset:0;background:linear-gradient(180deg,#f6e6c4,#f1d7a4 55%,#e8c38a);transition:background 1s var(--ease)}
+.esc-cielo::after{content:"";position:absolute;left:0;right:0;top:50%;height:4px;background:#8a837a}
+.esc-ventana .persiana3{position:absolute;inset:0;z-index:2;transform:translateY(calc((var(--p) - 1) * 100%))}
+.esc-ventana .persiana3 .lamas{position:absolute;inset:0 0 7px;--paso:11px;--rendija:calc(var(--p) * 2.4px)}
+.esc-ventana .persiana3 .contera{height:7px}
+.esc-ventana .cajon{height:9%}
+.esc-haz{position:absolute;inset:0;z-index:1;pointer-events:none;clip-path:polygon(33.5% 15%,63% 15%,96% 100%,54% 100%);background:linear-gradient(160deg,rgba(255,226,170,.30),rgba(255,214,150,.06) 70%);opacity:calc((1 - var(--p)) * 1);mix-blend-mode:screen;transition:opacity .2s}
+.esc-mancha{position:absolute;left:0;right:0;top:70%;bottom:0;z-index:1;pointer-events:none;transform-origin:top;transform:scaleY(calc(1 - var(--p) * .96))}
+.esc-mancha::before{content:"";position:absolute;inset:0;clip-path:polygon(37% 0,63% 0,96% 100%,52% 100%);background:linear-gradient(180deg,rgba(255,226,170,.85),rgba(255,206,140,.55));filter:blur(1.5px);opacity:calc(1 - var(--p) * .9);mix-blend-mode:screen}
+.esc-mancha::after{content:"";position:absolute;inset:0;clip-path:polygon(37% 0,63% 0,96% 100%,52% 100%);background:repeating-linear-gradient(180deg,transparent 0 14px,rgba(43,38,33,.9) 14px 17px);opacity:calc(var(--p) * .8)}
+.esc-sombra{position:absolute;inset:0;z-index:3;pointer-events:none;background:#0d0c0a;opacity:calc(var(--p) * .62)}
+.esc-lampara{position:absolute;inset:0;z-index:4;pointer-events:none;background:radial-gradient(60% 55% at 86% 34%,rgba(255,196,120,.45),transparent 70%);opacity:0;transition:opacity 1s var(--ease);mix-blend-mode:screen}
+.esc-lampara::before{content:"";position:absolute;left:84%;top:22%;width:5%;aspect-ratio:1;border-radius:50%;background:#ffe2b0;box-shadow:0 0 30px 10px rgba(255,200,120,.6)}
+.escena[data-modo=noche] .esc-cielo{background:linear-gradient(180deg,#0c1424,#16233a 60%,#1f2c44)}
+.escena[data-modo=noche] .esc-haz,.escena[data-modo=noche] .esc-mancha{opacity:0}
+.escena[data-modo=noche] .esc-lampara{opacity:1}
+.escena[data-modo=noche] .esc-pared{background:linear-gradient(180deg,#2c2824,#26221e)}
+.escena[data-modo=noche] .esc-piso{background:linear-gradient(180deg,#1d1a17,#25211c)}
+.escena[data-modo=noche] .esc-sombra{opacity:calc(.25 + var(--p) * .15)}
+@media (max-width:900px){
+  .luz-pin{grid-template-columns:1fr;align-content:center;gap:18px;padding-block:24px}
+  .luz h2{font-size:clamp(1.9rem,8vw,2.6rem)}
+  .pasos{margin-top:14px}
+  .js .pasos li{grid-area:1/1;opacity:0;border-bottom:1px solid var(--linea);grid-template-columns:1fr}
+  .js .pasos li.activo{opacity:1}
+  .pasos li{padding:12px 0}
+  .luz-ctrl{margin-top:12px}
+  .escena{aspect-ratio:5/4;order:2}
+}
+
+/* ---------- productos ---------- */
+.prod{background:var(--basalto);padding:clamp(90px,14vh,150px) 0}
+.cab{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:24px 60px;align-items:end;margin-bottom:clamp(40px,7vh,72px)}
+.cab .lead{justify-self:end}
+@media (max-width:860px){.cab{grid-template-columns:1fr}.cab .lead{justify-self:start}}
+.filas{border-top:1px solid var(--linea)}
+.fila{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:16px 40px;align-items:center;padding:30px 0;border-bottom:1px solid var(--linea);text-decoration:none;transition:padding .6s var(--ease)}
+.fila h3{font-size:clamp(1.9rem,3.6vw,3.2rem);transition:color .4s,transform .6s var(--ease)}
+.fila p{color:var(--niebla);max-width:42ch}
+.fila .ir{display:inline-flex;align-items:center;gap:10px;min-height:44px;color:var(--champana-claro);font-weight:500;white-space:nowrap}
+.fila .ir .i{transition:transform .5s var(--ease)}
+@media (hover:hover){.fila:hover h3{color:var(--champana-claro);transform:translateX(12px)}
+.fila:hover .ir .i{transform:translateX(6px)}}
+.vista{position:absolute;left:0;top:0;z-index:5;width:300px;aspect-ratio:4/5;pointer-events:none;overflow:hidden;opacity:0;transform:scale(.85);border-radius:2px;box-shadow:0 30px 60px -30px rgba(0,0,0,.9);transition:opacity .35s var(--ease)}
+.vista img{width:100%;height:100%;object-fit:cover}
+.vista.on{opacity:1}
+@media (max-width:860px){.fila{grid-template-columns:1fr;gap:10px;padding:26px 0}.vista{display:none}}
+
+/* ---------- muestrario ---------- */
+.colores{background:var(--piedra);color:var(--tinta);padding:clamp(90px,14vh,150px) 0}
+.colores .lead{color:var(--tinta-suave)}
+.colores :focus-visible{outline-color:var(--tinta)}
+.mgrid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(32px,6vw,96px);align-items:center}
+.mfoto{position:relative;margin:0;aspect-ratio:4/5;overflow:hidden;border-radius:2px;background:#bdb6aa}
+.mfoto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.mfoto .nueva{clip-path:inset(0 0 100% 0)}
+.mfoto .barrido{position:absolute;left:0;right:0;top:0;height:0;z-index:3;pointer-events:none}
+.mfoto .barrido .lamas{position:absolute;left:0;right:0;bottom:0;height:70px;opacity:.9;--paso:14px}
+.mnombre{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:34px 0 8px;padding-bottom:16px;border-bottom:1px solid var(--linea-osc)}
+.mnombre b{font:400 clamp(2.4rem,5vw,4rem)/1 var(--serif);letter-spacing:-.02em;overflow:hidden;display:block}
+.mnombre b span{display:inline-block}
+.mnombre small{color:var(--tinta-suave);font-size:.95rem}
+.chips{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:22px}
+.chip{display:grid;gap:10px;justify-items:start;padding:0;border:0;background:none;cursor:pointer;color:var(--tinta);font-size:.9rem;min-height:44px;text-align:left}
+.chip .m{width:100%;height:58px;border-radius:1px;outline:1px solid transparent;outline-offset:4px;transition:outline-color .4s var(--ease),transform .5s var(--ease)}
+.chip .m.lamas{--paso:10px;--rendija:0px}
+.chip:hover .m{transform:translateY(-3px)}
+.chip[aria-pressed=true] .m{outline-color:var(--tinta)}
+.chip[aria-pressed=true] span:last-child{font-weight:600}
+.m-madera{--l1:#c27a3c;--l2:#d99052;--l3:#a8642e;--l4:#7f4a20;--l5:#4c2c13}
+.m-cafe{--l1:#5e4433;--l2:#755642;--l3:#4a3426;--l4:#35251b;--l5:#1d140e}
+.m-grafito{--l1:#5d5e60;--l2:#76777a;--l3:#4b4c4e;--l4:#36373a;--l5:#1d1e20}
+.m-negro{--l1:#303030;--l2:#444;--l3:#262626;--l4:#191919;--l5:#0a0a0a}
+.m-blanco{--l1:#f2efe9;--l2:#fffdf8;--l3:#e3dfd7;--l4:#c9c4ba;--l5:#9f998f}
+@media (max-width:860px){.mgrid{grid-template-columns:1fr;gap:26px}.mfoto{aspect-ratio:1/1;order:2}.chips{grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}.chip{font-size:.78rem}.chip .m{height:44px}}
+
+/* ---------- motor ---------- */
+.motor{background:var(--grafito);padding:clamp(90px,14vh,150px) 0}
+.motor-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,90px);align-items:center}
+.marco{position:relative;overflow:hidden;border-radius:2px;aspect-ratio:3/4}
+.marco img{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover}
+.lista{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:12px}
+.lista li{display:flex;gap:12px;align-items:flex-start;color:var(--marfil)}.lista .i{color:var(--champana);margin-top:3px}
+.prueba{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:22px;align-items:center;margin-top:36px;padding-top:30px;border-top:1px solid var(--linea)}
+.prueba-ventana{position:relative;aspect-ratio:4/3;overflow:hidden;border:5px solid #8a837a;background:#6d7d8c url(assets/p-casa-blanca.jpg) center 30%/cover no-repeat}
+.prueba-ventana::after{content:"";position:absolute;top:0;bottom:0;left:50%;width:4px;background:#8a837a}
+.persiana4{--q:.55;position:absolute;inset:0;z-index:2;transform:translateY(calc((var(--q) - 1) * 100%))}
+.persiana4 .lamas{position:absolute;inset:0 0 8px;--paso:12px;--rendija:0px}
+.persiana4 .contera{height:8px}
+.prueba-ventana .cajon{height:10%}
+.interruptor{width:132px;aspect-ratio:1;background:linear-gradient(145deg,#f4f2ee,#dedad3);border-radius:10px;display:grid;place-items:center;box-shadow:0 18px 30px -16px rgba(0,0,0,.9),inset 0 1px 0 #fff}
+.rueda{position:relative;width:86px;aspect-ratio:1;border-radius:50%;border:2px solid #b9b3a9;display:grid;grid-template-rows:1fr 1fr;overflow:hidden}
+.rueda button{border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#5e5850;transition:background .2s}
+.rueda button:hover{background:rgba(0,0,0,.05)}.rueda button:active,.rueda button.on{background:rgba(198,167,119,.35);color:#2c2823}
+.rueda button + button{border-top:1px solid #cfc9bf}
+.rueda svg{width:22px;height:22px}
+.prueba-pie{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+.parar{min-height:44px;padding:0 16px;background:none;border:1px solid var(--linea);color:var(--marfil);cursor:pointer;border-radius:2px}
+.parar:hover{border-color:var(--champana)}
+@media (max-width:860px){.motor-grid{grid-template-columns:1fr}.marco{aspect-ratio:4/3}}
+@media (max-width:520px){.prueba{grid-template-columns:1fr;justify-items:center}.prueba-ventana{width:100%}}
+
+/* ---------- obras ---------- */
+.obras{background:var(--basalto);padding:clamp(90px,14vh,140px) 0 clamp(70px,10vh,110px);overflow:hidden}
+.pista{display:flex;gap:clamp(14px,2vw,28px);padding-inline:max(20px,calc((100vw - 1240px)/2));will-change:transform}
+.pista figure{margin:0;flex:none;height:clamp(320px,62vh,620px);overflow:hidden;border-radius:2px;background:#24211e}
+.pista figure img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
+.pista figure:hover img{transform:scale(1.03)}
+.f-a{aspect-ratio:4/5}.f-b{aspect-ratio:1/1}.f-c{aspect-ratio:3/4}.f-d{aspect-ratio:5/4}.f-e{aspect-ratio:16/10}
+@media (max-width:899px),(prefers-reduced-motion:reduce){
+  .pista{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
+  .pista::-webkit-scrollbar{display:none}
+  .pista figure{scroll-snap-align:center;height:auto;width:min(80vw,460px)}
+  .pista figure.f-e{width:min(88vw,560px)}
+}
+.desliza{margin-top:18px;color:var(--niebla);font-size:.9rem}
+@media (min-width:900px) and (prefers-reduced-motion:no-preference){.desliza{display:none}}
+
+/* ---------- opiniones ---------- */
+.opi{background:var(--grafito);padding:clamp(90px,14vh,150px) 0}
+.nota{display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px 48px;align-items:end;padding-bottom:40px;border-bottom:1px solid var(--linea)}
+.nota .num{font:400 clamp(6rem,16vw,12rem)/.8 var(--serif);letter-spacing:-.04em;color:var(--marfil);font-variant-numeric:tabular-nums}
+.nota .est{display:flex;gap:6px;color:var(--champana);margin-bottom:14px}.nota .est svg{width:22px;height:22px;fill:currentColor;stroke:none}
+.nota p{color:var(--niebla);max-width:40ch}.nota p b{color:var(--marfil);font-weight:500}
+.citas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:48px}
+.cita{margin:0;display:flex;flex-direction:column;gap:18px}
+.cita blockquote{margin:0;font:400 clamp(1.25rem,1.8vw,1.55rem)/1.35 var(--serif);letter-spacing:-.01em}
+.cita figcaption{color:var(--niebla);font-size:.88rem}
+@media (max-width:900px){.citas{grid-template-columns:1fr;gap:34px}.nota{grid-template-columns:1fr}}
+
+/* ---------- cotizar ---------- */
+.cot{background:var(--basalto);padding:clamp(90px,14vh,150px) 0}
+.cot-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,6vw,90px);align-items:start}
+.hor{list-style:none;padding:0;margin:30px 0 22px}.hor li{display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--linea);color:var(--niebla)}.hor b{color:var(--marfil);font-weight:500}
+.donde{display:flex;gap:10px;align-items:center;color:var(--niebla)}.donde .i{color:var(--champana)}
+.form{display:grid;gap:22px;padding:clamp(24px,3vw,40px);background:var(--grafito);border:1px solid var(--linea);border-radius:2px}
+.form h3{font-size:1.9rem}
+.campo{display:grid;gap:4px;font-size:.88rem;color:var(--niebla)}
+.campo input,.campo select{width:100%;min-height:48px;padding:10px 0;border:0;border-bottom:1px solid rgba(236,230,220,.28);background:transparent;color:var(--marfil);font-size:1.05rem;border-radius:0;transition:border-color .3s;appearance:none;-webkit-appearance:none}
+.campo select{background-image:linear-gradient(45deg,transparent 50%,var(--champana) 50%),linear-gradient(135deg,var(--champana) 50%,transparent 50%);background-position:calc(100% - 12px) 22px,calc(100% - 7px) 22px;background-size:5px 5px;background-repeat:no-repeat;padding-right:28px;cursor:pointer}
+.campo select option{background:var(--grafito);color:var(--marfil)}
+.campo input::placeholder{color:#7d756b}
+.campo input:focus,.campo select:focus{outline:none;border-bottom-color:var(--champana)}
+.dosc{display:grid;grid-template-columns:1fr 1fr;gap:22px}@media (max-width:520px){.dosc{grid-template-columns:1fr}}
+.aviso-f{min-height:1.2em;color:#f0a78f;font-weight:500;font-size:.92rem}
+.form .btn{width:100%}
+.form small{color:var(--niebla);font-size:.85rem}
+@media (max-width:880px){.cot-grid{grid-template-columns:1fr}}
+
+/* ---------- preguntas ---------- */
+.faqs{background:var(--basalto);padding:0 0 clamp(90px,14vh,150px)}
+.faqwrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:40px;padding-top:clamp(60px,10vh,100px);border-top:1px solid var(--linea)}
+.faq{border-bottom:1px solid var(--linea)}
+.faq summary{cursor:pointer;list-style:none;padding:22px 40px 22px 0;font:400 1.3rem/1.3 var(--serif);position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:6px;top:50%;width:14px;height:14px;margin-top:-7px;background:linear-gradient(var(--champana),var(--champana)) center/14px 1px no-repeat,linear-gradient(var(--champana),var(--champana)) center/1px 14px no-repeat;transition:transform .5s var(--ease)}
+.faq[open] summary::after{transform:rotate(45deg)}
+.faq p{padding:0 0 22px;color:var(--niebla);max-width:60ch}
+@media (max-width:860px){.faqwrap{grid-template-columns:1fr}}
+
+/* ---------- pie ---------- */
+footer{background:#100f0d;color:var(--niebla);padding:70px 0 34px;overflow:hidden}
+.pie-fila{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 40px;font-size:.95rem}
+.pie-fila a{display:inline-block;padding:12px 0;color:var(--marfil);text-decoration-color:rgba(198,167,119,.6);text-underline-offset:4px}
+.gigante{font:400 clamp(5rem,23vw,22rem)/.8 var(--serif);letter-spacing:-.05em;color:var(--marfil);margin:50px 0 26px;white-space:nowrap;text-align:center}
+.gigante span{display:inline-block}
+.pie-chico{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 30px;font-size:.85rem;border-top:1px solid var(--linea);padding-top:20px}
+
+/* ---------- barra móvil, botón flotante ---------- */
+.barra-movil{display:none}
+@media (max-width:760px){
+  .barra-movil{position:fixed;left:0;right:0;bottom:0;z-index:60;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--linea);background:var(--basalto)}
+  .barra-movil a{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;font-weight:500;text-decoration:none;color:var(--marfil)}
+  .barra-movil a.wa{background:var(--champana);color:var(--basalto)}
+  body{padding-bottom:56px}
+}
+.fab{position:fixed;right:18px;bottom:18px;z-index:59;display:inline-flex;align-items:center;gap:10px;background:var(--marfil);color:var(--basalto);text-decoration:none;font-weight:500;font-size:.92rem;padding:12px 18px 12px 14px;border-radius:999px;box-shadow:0 14px 30px -12px rgba(0,0,0,.7);transition:transform .3s var(--ease)}
+.fab:hover{transform:translateY(-2px)}
+.fab .i{width:22px;height:22px}
+@media (max-width:760px){.fab{bottom:68px;right:12px;padding:12px}body .fab .fab-txt{display:none}}
+
+/* ---------- grano y cursor ---------- */
+.grano{position:fixed;inset:0;z-index:70;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.cursor{position:fixed;left:0;top:0;z-index:80;width:0;height:0;pointer-events:none;opacity:0;transition:opacity .3s}
+.cursor::before{content:"";position:absolute;left:-19px;top:-19px;width:38px;height:38px;border:1px solid rgba(198,167,119,.7);border-radius:50%;transition:transform .45s var(--ease),background-color .35s}
+.cursor.on{opacity:1}
+.cursor.grande::before{transform:scale(1.7);background-color:rgba(198,167,119,.12)}
+@media (hover:none),(pointer:coarse){.cursor{display:none}}
+
+/* ---------- textos por líneas: ocultos solo mientras carga la animación ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .js:not(.listo) [data-split]{visibility:hidden}
+  .js:not(.listo) [data-entra]{opacity:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .js .pasos li{opacity:1}
+  .persiana{transform:translateY(-101%)}
+}
 </style>
+</head>
+<body>
+<a class="saltar" href="#luz">Saltar al contenido</a>
+
 <div class="muestra"><div><span><b>Página de muestra hecha para Altosol Persianas por SENTRY-CODE.</b> Publicada con su dominio en 48 horas · $80.000 pago único con dominio incluido · mantención opcional de $15.000 al mes.</span><a href="https://wa.me/56974479565?text=Hola%20Agust%C3%ADn%2C%20vi%20la%20p%C3%A1gina%20de%20muestra%20de%20Altosol%20Persianas%20y%20quiero%20publicarla" target="_blank" rel="noopener">Quiero mi página</a></div></div>
 
-<header><div class="wrap nav">
-  <a class="marca" href="#inicio"><span class="sello"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 3.5h17v3.5h-17z"/><path d="M4.5 7v13.5h15V7"/><path d="M4.5 10h15M4.5 13h15M4.5 16h15"/></svg></span><span><b>Altosol</b><small>Persianas exteriores · Peñalolén</small></span></a>
-  <nav class="menu" aria-label="Secciones"><a href="#persianas">Persianas</a><a href="#colores">Colores</a><a href="#motor">Motorizadas</a><a href="#opiniones">Opiniones</a></nav>
-  <a class="btn btn-p" href="#cotizar">Cotizar</a>
+<header class="top"><div class="wrap nav">
+  <a class="marca" href="#inicio" aria-label="Altosol Persianas, inicio"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="4" y="4" width="24" height="5"/><path d="M5.5 9v19h21V9"/><path d="M5.5 12.5h21M5.5 16h21M5.5 19.5h21M5.5 23h21" opacity=".7"/></svg><b>Altosol</b></a>
+  <nav class="menu" aria-label="Secciones"><a href="#luz">La luz</a><a href="#persianas">Persianas</a><a href="#colores">Colores</a><a href="#motor">Motorizadas</a><a href="#obras">Obras</a><a href="#opiniones">Opiniones</a></nav>
+  <a class="btn btn-c" href="#cotizar" data-magnet>Cotizar</a>
 </div></header>
+
 <main id="inicio">
-<section class="portada"><div class="grid">
-  <div class="txt">
-    <span class="eti" style="color:#e59a6c"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 3.5h17v3.5h-17z"/><path d="M4.5 7v13.5h15V7"/><path d="M4.5 10h15M4.5 13h15M4.5 16h15"/></svg>Persianas exteriores · Peñalolén</span>
-    <h1>Persianas que <span>tapan el sol</span> desde afuera</h1>
-    <p class="baja">Persianas exteriores enrollables de aluminio para ventanas, puertas y terrazas, manuales o con motor e interruptor. Cuéntenos cuántas ventanas tiene y le cotizamos por WhatsApp.</p>
-    <div class="acciones"><a class="btn btn-wa" href="https://wa.me/56997642209?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quiero%20cotizar%20persianas%20exteriores" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.6 8.6 0 1 1 8 19.4z"/><path d="M9 8.6c.2 2.9 2.6 5.4 5.6 5.8l1-1.1 1.9.8-.4 1.8c-4.6.4-8.8-3.6-8.5-8.3l1.8-.4.8 1.9z"/></svg>Cotizar por WhatsApp</a><a class="btn btn-o" href="tel:+56997642209"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3.5h3.6l1.6 4.4-2.2 1.4a11 11 0 0 0 6.2 6.2l1.4-2.2 4.4 1.6V18.5A2 2 0 0 1 18 20.5 15.5 15.5 0 0 1 3.5 6 2 2 0 0 1 5 3.5z"/></svg>Llamar</a></div>
-    <ul class="datos"><li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z"/></svg><b>5,0</b> en Google</li><li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19.5c.6-3.3 2.8-5 5.5-5s4.9 1.7 5.5 5"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.6c2.4-.3 4.4 1.2 5 4"/></svg><b>13</b> opiniones</li><li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>Lun a vie 10 a 17 h</li></ul>
+<section class="hero" aria-label="Portada">
+  <div class="hero-txt">
+    <h1><span class="cat" data-entra>Persianas exteriores de aluminio en Peñalolén</span><span data-split>Usted decide cuánta luz entra.</span></h1>
+    <p class="lead" data-entra>Persianas exteriores enrollables para ventanas, puertas y terrazas, manuales o con motor. Cuéntenos cuántas ventanas tiene y le cotizamos por WhatsApp.</p>
+    <div class="acciones" data-entra><a class="btn btn-p" data-magnet href="https://wa.me/56997642209?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quiero%20cotizar%20persianas%20exteriores" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.6 8.6 0 1 1 8 19.4z"/><path d="M9 8.6c.2 2.9 2.6 5.4 5.6 5.8l1-1.1 1.9.8-.4 1.8c-4.6.4-8.8-3.6-8.5-8.3l1.8-.4.8 1.9z"/></svg>Cotizar por WhatsApp</a><a class="btn btn-o" data-magnet href="#colores">Ver colores</a></div>
+    <ul class="datos" data-entra><li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z"/></svg><span><b>5,0</b> en Google</span></li><li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19.5c.6-3.3 2.8-5 5.5-5s4.9 1.7 5.5 5"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.6c2.4-.3 4.4 1.2 5 4"/></svg><span><b>13</b> opiniones</span></li><li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><span>Lun a vie, 10 a 17 h</span></li></ul>
   </div>
-  <div class="ventana"><img src="assets/hero.jpg" alt="Casa con persianas exteriores de aluminio color café instaladas por Altosol Persianas"><div class="lamas" aria-hidden="true"></div><div class="caja" aria-hidden="true"></div></div>
+  <div class="hero-win">
+    <img src="assets/p-hero.jpg" alt="Persiana exterior negra instalada en una terraza con muro de piedra y techo de madera" width="1094" height="1400" fetchpriority="high">
+    <div class="cajon" aria-hidden="true"></div>
+    <div class="persiana-mov" aria-hidden="true"><div class="persiana"><div class="lamas"></div><div class="contera"></div></div></div>
+  </div>
+  <p class="bajar-hint" aria-hidden="true"><span></span>Baje y la persiana se cierra</p>
+</section>
+
+<section class="luz" id="luz" aria-labelledby="luz-t"><div class="wrap luz-pin">
+  <div class="luz-txt">
+    <h2 id="luz-t" data-split>La misma ventana, tres luces distintas.</h2>
+    <ol class="pasos">
+      <li class="activo" data-paso="0"><b>Arriba</b><p>Entra toda la luz del día.</p></li>
+      <li data-paso="1"><b>A media altura</b><p>Tapa el sol antes de que entre, desde afuera de la ventana.</p></li>
+      <li data-paso="2"><b>Abajo</b><p>Oscurece la pieza y da privacidad, de día o de noche.</p></li>
+    </ol>
+    <div class="luz-ctrl">
+      <div class="seg" role="group" aria-label="Hora del día"><button type="button" data-modo="dia" aria-pressed="true">Día</button><button type="button" data-modo="noche" aria-pressed="false">Noche</button></div>
+      <p class="lectura" aria-live="off">Persiana bajada <b id="pct">0</b>%</p>
+    </div>
+  </div>
+  <div class="escena" id="escena" data-modo="dia" role="img" aria-label="Dibujo de una pieza con una ventana: al bajar la persiana exterior, la luz del sol en el piso se achica hasta que la pieza queda oscura">
+    <div class="esc-pared"></div><div class="esc-piso"></div><div class="esc-zocalo"></div>
+    <div class="esc-haz"></div><div class="esc-mancha"></div>
+    <div class="esc-ventana"><div class="esc-cielo"></div><div class="cajon"></div><div class="persiana3"><div class="lamas"></div><div class="contera"></div></div></div>
+    <div class="esc-sombra"></div><div class="esc-lampara"></div>
+  </div>
 </div></section>
 
-<section id="persianas"><div class="wrap">
-  <div class="cab reveal"><div><span class="eti"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12.5l4.5 4.5 10.5-11"/></svg>Lo que instalamos</span><h2>Persianas hechas <span>para afuera</span></h2></div><p>Van por fuera de la ventana: tapan el sol antes de que entre, oscurecen la pieza y dan privacidad. Elija qué necesita y le dejamos el mensaje listo.</p></div>
-  <div class="servs"><article class="serv reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 3.5h17v3.5h-17z"/><path d="M4.5 7v13.5h15V7"/><path d="M4.5 10h15M4.5 13h15M4.5 16h15"/></svg></div><h3>Persianas exteriores</h3><p>Persianas de aluminio que se enrollan en una caja sobre la ventana: oscurecen, tapan el sol y dan privacidad.</p>
-      <a href="https://wa.me/56997642209?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quiero%20cotizar%20persianas%20exteriores." target="_blank" rel="noopener">Cotizar <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></article><article class="serv reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="3"/><path d="M12 7l-2 2.5h4zM12 15l-2-2.5h4z"/><path d="M10.5 18h3"/></svg></div><h3>Persianas motorizadas</h3><p>Con motor e interruptor para subirlas y bajarlas con un botón.</p>
-      <a href="https://wa.me/56997642209?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quiero%20cotizar%20persianas%20motorizadas." target="_blank" rel="noopener">Cotizar <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></article><article class="serv reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 9l9.5-5.5 9.5 5.5"/><path d="M4.5 9v11.5M19.5 9v11.5M4.5 13h15"/><path d="M7 13v7.5M17 13v7.5M10 17h4"/></svg></div><h3>Puertas y terrazas</h3><p>Persianas para puertas, ventanales y terrazas, para cerrarlas de noche o cuando no está.</p>
-      <a href="https://wa.me/56997642209?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quiero%20cotizar%20puertas%20y%20terrazas." target="_blank" rel="noopener">Cotizar <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></article><article class="serv reveal"><div class="ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5h18"/><path d="M3 5.5l2.5 7h13l2.5-7"/><path d="M5.5 12.5v8M18.5 12.5v8"/><path d="M5.5 12.5c1 1.5 2.5 1.5 3.25 0 .75 1.5 2.5 1.5 3.25 0 .75 1.5 2.5 1.5 3.25 0 .75 1.5 2.25 1.5 3.25 0"/></svg></div><h3>Toldos</h3><p>Consúltenos también por toldos para su terraza.</p>
-      <a href="https://wa.me/56997642209?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quiero%20cotizar%20toldos." target="_blank" rel="noopener">Cotizar <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></article></div>
+<section class="prod" id="persianas" aria-labelledby="prod-t"><div class="wrap">
+  <div class="cab"><h2 id="prod-t" data-split>Lo que instalamos</h2><p class="lead">Van por fuera de la ventana: tapan el sol antes de que entre, oscurecen la pieza y dan privacidad. Elija qué necesita y le dejamos el mensaje listo.</p></div>
+  <div class="filas">
+    <a class="fila" data-vista="assets/p-grafito.jpg" href="https://wa.me/56997642209?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quiero%20cotizar%20persianas%20exteriores." target="_blank" rel="noopener"><h3>Persianas exteriores</h3><p>De aluminio, se enrollan en una caja sobre la ventana: oscurecen, tapan el sol y dan privacidad.</p><span class="ir">Cotizar <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="fila" data-vista="assets/control.jpg" href="https://wa.me/56997642209?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quiero%20cotizar%20persianas%20motorizadas." target="_blank" rel="noopener"><h3>Persianas motorizadas</h3><p>Con motor e interruptor para subirlas y bajarlas con un botón.</p><span class="ir">Cotizar <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="fila" data-vista="assets/p-terraza.jpg" href="https://wa.me/56997642209?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quiero%20cotizar%20puertas%20y%20terrazas." target="_blank" rel="noopener"><h3>Puertas y terrazas</h3><p>Para puertas, ventanales y terrazas, para cerrarlas de noche o cuando no está.</p><span class="ir">Cotizar <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="fila" href="https://wa.me/56997642209?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quiero%20cotizar%20toldos." target="_blank" rel="noopener"><h3>Toldos</h3><p>Consúltenos también por toldos para su terraza.</p><span class="ir">Consultar <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+  </div>
+  <div class="vista" aria-hidden="true"><img alt="" src="assets/p-grafito.jpg"></div>
 </div></section>
 
-<section id="colores" class="muestrario"><div class="wrap mgrid">
-  <figure class="mfoto reveal"><img id="mVista" src="assets/madera.jpg" alt="Persiana exterior color madera en una puerta junto a un muro de ladrillo"><figcaption id="mCap">Madera</figcaption></figure>
-  <div class="reveal"><span class="eti"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-6.5 8 6.5"/><path d="M6 9.5v10h12v-10"/><path d="M10 19.5v-5h4v5"/></svg>Muestrario</span><h2>El color que <span>va con su casa</span></h2>
-    <p style="color:var(--suave);max-width:42ch">Estas son persianas que ya instalamos. Toque un color para ver cómo queda en una casa de verdad.</p>
-    <div class="colores" role="group" aria-label="Colores de persiana"><button type="button" data-color="Madera" data-src="assets/madera.jpg" data-alt="Persiana exterior color madera en una puerta junto a un muro de ladrillo" aria-pressed="true"><span class="sw" style="background-color:#a8642e"></span><span>Madera<small>tono miel</small></span></button><button type="button" data-color="Café" data-src="assets/cafe.jpg" data-alt="Ventana con persiana exterior café a media altura" aria-pressed="false"><span class="sw" style="background-color:#4a3426"></span><span>Café<small>café oscuro</small></span></button><button type="button" data-color="Grafito" data-src="assets/grafito.jpg" data-alt="Casa de dos pisos con persianas exteriores color grafito" aria-pressed="false"><span class="sw" style="background-color:#4b4c4e"></span><span>Grafito<small>gris oscuro</small></span></button><button type="button" data-color="Negro" data-src="assets/negro.jpg" data-alt="Persiana exterior negra en una terraza" aria-pressed="false"><span class="sw" style="background-color:#1d1d1d"></span><span>Negro<small>negro mate</small></span></button><button type="button" data-color="Blanco" data-src="assets/blanco.jpg" data-alt="Persiana exterior blanca cerrando una terraza" aria-pressed="false"><span class="sw" style="background-color:#ebe7df"></span><span>Blanco<small>claro</small></span></button></div></div>
+<section class="colores" id="colores" aria-labelledby="col-t"><div class="wrap mgrid">
+  <figure class="mfoto" id="mFoto">
+    <img class="base" src="assets/madera.jpg" alt="Persiana exterior color madera en una puerta junto a un muro de ladrillo">
+    <img class="nueva" src="assets/madera.jpg" alt="" aria-hidden="true">
+    <div class="barrido" aria-hidden="true"><div class="lamas m-grafito"></div></div>
+  </figure>
+  <div>
+    <h2 id="col-t" data-split>El color que va con su fachada</h2>
+    <p class="lead" style="margin-top:22px">Son persianas que ya instalamos. Toque un color y la persiana baja sobre la foto de una casa de verdad.</p>
+    <div class="mnombre" aria-live="polite"><b id="mNombre"><span>Madera</span></b><small id="mTono">tono miel</small></div>
+    <div class="chips" role="group" aria-label="Colores de persiana">
+      <button type="button" class="chip" data-color="Madera" data-tono="tono miel" data-src="assets/madera.jpg" data-alt="Persiana exterior color madera en una puerta junto a un muro de ladrillo" aria-pressed="true"><span class="m lamas m-madera"></span><span>Madera</span></button>
+      <button type="button" class="chip" data-color="Café" data-tono="café oscuro" data-src="assets/cafe.jpg" data-alt="Ventana con persiana exterior café a media altura" aria-pressed="false"><span class="m lamas m-cafe"></span><span>Café</span></button>
+      <button type="button" class="chip" data-color="Grafito" data-tono="gris oscuro" data-src="assets/grafito.jpg" data-alt="Casa de dos pisos con persianas exteriores color grafito" aria-pressed="false"><span class="m lamas m-grafito"></span><span>Grafito</span></button>
+      <button type="button" class="chip" data-color="Negro" data-tono="negro mate" data-src="assets/negro.jpg" data-alt="Persiana exterior negra en una terraza" aria-pressed="false"><span class="m lamas m-negro"></span><span>Negro</span></button>
+      <button type="button" class="chip" data-color="Blanco" data-tono="claro" data-src="assets/blanco.jpg" data-alt="Persiana exterior blanca cerrando una terraza" aria-pressed="false"><span class="m lamas m-blanco"></span><span>Blanco</span></button>
+    </div>
+  </div>
 </div></section>
 
-<section id="motor"><div class="wrap motor">
-  <img class="reveal" src="assets/control.jpg" alt="Interruptor inalámbrico para subir y bajar una persiana motorizada" loading="lazy">
-  <div class="reveal"><span class="eti"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="3"/><path d="M12 7l-2 2.5h4zM12 15l-2-2.5h4z"/><path d="M10.5 18h3"/></svg>Manual o motorizada</span><h2>Suba y baje <span>con un botón</span></h2>
-    <p style="color:var(--suave);max-width:46ch">Además de las persianas manuales, instalamos persianas con motor que se manejan con un interruptor, sin tener que tirar de la cinta.</p>
+<section class="motor" id="motor" aria-labelledby="mot-t"><div class="wrap motor-grid">
+  <div class="marco"><img src="assets/control.jpg" alt="Interruptor inalámbrico para subir y bajar una persiana motorizada" loading="lazy" data-parallax></div>
+  <div>
+    <h2 id="mot-t" data-split>Suba y baje con un botón</h2>
+    <p class="lead" style="margin-top:22px">Además de las manuales, instalamos persianas con motor que se manejan con un interruptor, sin tirar de la cinta.</p>
     <ul class="lista"><li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12.5l4.5 4.5 10.5-11"/></svg><span>Ideal para ventanales grandes y puertas de terraza.</span></li>
       <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12.5l4.5 4.5 10.5-11"/></svg><span>Interruptor en la pared o a mano, como el de la foto.</span></li>
       <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12.5l4.5 4.5 10.5-11"/></svg><span>Dígale al cotizar si quiere motor y le contamos las opciones.</span></li></ul>
-    <div class="acciones" style="margin-top:26px"><a class="btn btn-wa" href="https://wa.me/56997642209?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quiero%20cotizar%20persianas%20motorizadas" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.6 8.6 0 1 1 8 19.4z"/><path d="M9 8.6c.2 2.9 2.6 5.4 5.6 5.8l1-1.1 1.9.8-.4 1.8c-4.6.4-8.8-3.6-8.5-8.3l1.8-.4.8 1.9z"/></svg>Cotizar motorizada</a><a class="btn btn-o" href="tel:+56997642209"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3.5h3.6l1.6 4.4-2.2 1.4a11 11 0 0 0 6.2 6.2l1.4-2.2 4.4 1.6V18.5A2 2 0 0 1 18 20.5 15.5 15.5 0 0 1 3.5 6 2 2 0 0 1 5 3.5z"/></svg>Llamar</a></div></div>
+    <div class="prueba">
+      <div class="prueba-ventana" aria-hidden="true"><div class="cajon"></div><div class="persiana4" id="p4"><div class="lamas m-grafito"></div><div class="contera"></div></div></div>
+      <div class="interruptor"><div class="rueda"><button type="button" id="subir" aria-label="Subir la persiana de prueba"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M7 14l5-5 5 5"/></svg></button><button type="button" id="bajar" aria-label="Bajar la persiana de prueba"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M7 10l5 5 5-5"/></svg></button></div></div>
+      <div class="prueba-pie"><p class="lectura">Pruébelo: persiana bajada <b id="pct4">55</b>%</p><button type="button" class="parar" id="parar">Detener</button></div>
+    </div>
+    <div class="acciones" style="margin-top:30px"><a class="btn btn-p" data-magnet href="https://wa.me/56997642209?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quiero%20cotizar%20persianas%20motorizadas" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.6 8.6 0 1 1 8 19.4z"/><path d="M9 8.6c.2 2.9 2.6 5.4 5.6 5.8l1-1.1 1.9.8-.4 1.8c-4.6.4-8.8-3.6-8.5-8.3l1.8-.4.8 1.9z"/></svg>Cotizar motorizada</a><a class="btn btn-o" data-magnet href="tel:+56997642209"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3.5h3.6l1.6 4.4-2.2 1.4a11 11 0 0 0 6.2 6.2l1.4-2.2 4.4 1.6V18.5A2 2 0 0 1 18 20.5 15.5 15.5 0 0 1 3.5 6 2 2 0 0 1 5 3.5z"/></svg>Llamar</a></div>
+  </div>
 </div></section>
 
-<section style="background:#fff"><div class="wrap">
-  <div class="cab reveal"><div><span class="eti"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-6.5 8 6.5"/><path d="M6 9.5v10h12v-10"/><path d="M10 19.5v-5h4v5"/></svg>Trabajos</span><h2>En casas <span>de clientes</span></h2></div><p>Ventanas, puertas y terrazas con persianas exteriores ya instaladas.</p></div>
-  <div class="galeria"><img class="reveal" src="assets/g1.jpg" alt="Persiana café a media altura en la terraza de una casa" loading="lazy"><img class="reveal" src="assets/g2.jpg" alt="Fachada de una casa con persiana exterior en una ventana del segundo piso" loading="lazy"><img class="reveal" src="assets/g3.jpg" alt="Ventana con persiana exterior café" loading="lazy"><img class="reveal" src="assets/g4.jpg" alt="Casa con persianas exteriores grafito en el segundo piso" loading="lazy"></div>
+<section class="obras" id="obras" aria-labelledby="obr-t">
+  <div class="wrap cab"><h2 id="obr-t" data-split>Instaladas en casas de clientes</h2><p class="lead">Ventanas, puertas y terrazas con persianas exteriores de Altosol. Fotos de su ficha de Google.</p></div>
+  <div class="pista" id="pista" tabindex="0" aria-label="Fotos de trabajos, deslice para ver más">
+    <figure class="f-e"><img src="assets/p-moderna.jpg" alt="Casa moderna con persianas exteriores color café en el segundo piso" loading="lazy"></figure>
+    <figure class="f-a"><img src="assets/p-lamas.jpg" alt="Detalle de las láminas de una persiana color madera" loading="lazy"></figure>
+    <figure class="f-d"><img src="assets/p-grafito.jpg" alt="Fachada con persianas exteriores grafito en las ventanas del segundo piso" loading="lazy"></figure>
+    <figure class="f-b"><img src="assets/p-terraza.jpg" alt="Persiana color madera a media altura en una terraza con sol" loading="lazy"></figure>
+    <figure class="f-c"><img src="assets/g2.jpg" alt="Casa con persiana exterior en una ventana del segundo piso" loading="lazy"></figure>
+    <figure class="f-d"><img src="assets/p-cajon.jpg" alt="Detalle de la caja de una persiana café sobre una ventana" loading="lazy"></figure>
+    <figure class="f-a"><img src="assets/blanco.jpg" alt="Persiana exterior blanca cerrando una terraza" loading="lazy"></figure>
+  </div>
+  <div class="wrap"><p class="desliza">Deslice para ver más trabajos.</p></div>
+</section>
+
+<section class="opi" id="opiniones" aria-labelledby="opi-t"><div class="wrap">
+  <h2 id="opi-t" class="sr">Opiniones en Google</h2>
+  <div class="nota">
+    <p class="num" aria-label="5,0 estrellas"><span id="cuenta" aria-hidden="true">5,0</span></p>
+    <div><div class="est" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z"/></svg><svg viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z"/></svg></div>
+      <p><b><span id="cuenta13">13</span> opiniones en Google</b>, todas de 5 estrellas. Sus clientes destacan la calidad, la organización y que cumplen los plazos.</p></div>
+  </div>
+  <div class="citas">
+    <figure class="cita"><blockquote>Gente seria que cumplió los plazos: sus persianas quedaron muy bien y ya piensa en hacer un toldo con ellos.</blockquote><figcaption>Resumen de la opinión de Claudio S. en Google</figcaption></figure>
+    <figure class="cita"><blockquote>Muy buena organización. Las persianas quedaron muy bonitas en su casa; las recomienda.</blockquote><figcaption>Resumen de la opinión de María Paz C. en Google</figcaption></figure>
+    <figure class="cita"><blockquote>Buen servicio y atención, productos de muy buena calidad y un equipo responsable.</blockquote><figcaption>Resumen de la opinión de Ingrid C. en Google</figcaption></figure>
+  </div>
 </div></section>
 
-<section id="opiniones"><div class="wrap">
-  <div class="cab reveal"><div><span class="eti"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z"/></svg>Opiniones</span><h2>5,0 estrellas <span>en Google</span></h2></div><p>Todas las opiniones de la ficha de Google de Altosol Persianas son de 5 estrellas.</p></div>
-  <div class="resgrid"><figure class="res reveal"><span class="est" aria-label="5 de 5 estrellas">★★★★★</span><blockquote>Gente seria que cumplió los plazos: sus persianas quedaron muy bien y ya piensa en hacer un toldo con ellos.</blockquote><figcaption>Resumen de la opinión de Claudio S. en Google</figcaption></figure><figure class="res reveal"><span class="est" aria-label="5 de 5 estrellas">★★★★★</span><blockquote>Muy buena organización. Las persianas quedaron muy bonitas en su casa; las recomienda.</blockquote><figcaption>Resumen de la opinión de María Paz C. en Google</figcaption></figure><figure class="res reveal"><span class="est" aria-label="5 de 5 estrellas">★★★★★</span><blockquote>Buen servicio y atención, productos de muy buena calidad y un equipo responsable.</blockquote><figcaption>Resumen de la opinión de Ingrid C. en Google</figcaption></figure></div>
-</div></section>
-
-<section id="cotizar" class="cot"><div class="wrap">
-  <div class="reveal"><span class="eti"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.6 8.6 0 1 1 8 19.4z"/><path d="M9 8.6c.2 2.9 2.6 5.4 5.6 5.8l1-1.1 1.9.8-.4 1.8c-4.6.4-8.8-3.6-8.5-8.3l1.8-.4.8 1.9z"/></svg>Cotización</span><h2>Cotice sus <span style="color:#e59a6c">persianas</span></h2>
-    <p style="max-width:40ch">Complete lo que sepa y se abre WhatsApp con el mensaje listo. Si tiene fotos de las ventanas o sus medidas, mándelas en el chat.</p>
+<section class="cot" id="cotizar" aria-labelledby="cot-t"><div class="wrap cot-grid">
+  <div>
+    <h2 id="cot-t" data-split>Cotice sus persianas</h2>
+    <p class="lead" style="margin-top:22px">Complete lo que sepa y se abre WhatsApp con el mensaje listo. Si tiene fotos de las ventanas o sus medidas, mándelas en el chat.</p>
     <ul class="hor"><li><span>Lunes a viernes</span><b>10:00 a 17:00</b></li><li><span>Sábado y domingo</span><b>Cerrado</b></li></ul>
-    <p><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.4A7 7 0 0 1 19 9.6C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg> Peñalolén. Las visitas se coordinan por WhatsApp.</p></div>
-  <form class="form reveal" data-cot novalidate data-wa="56997642209" data-msg="Hola, vi su página web y quiero cotizar." data-falta="Elija qué necesita.">
+    <p class="donde"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.4A7 7 0 0 1 19 9.6C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Peñalolén. Las visitas se coordinan por WhatsApp.</p>
+  </div>
+  <form class="form" data-cot novalidate data-wa="56997642209" data-msg="Hola, vi su página web y quiero cotizar." data-falta="Elija qué necesita.">
     <h3>¿Qué necesita?</h3>
-    <label class="campo">Producto<select data-k="Producto:" data-req><option value="">— Elija una opción —</option><option>Persianas exteriores</option><option>Persianas motorizadas</option><option>Puertas y terrazas</option><option>Toldos</option><option>Otra consulta</option></select></label>
+    <label class="campo">Producto<select data-k="Producto:" data-req><option value="">Elija una opción</option><option>Persianas exteriores</option><option>Persianas motorizadas</option><option>Puertas y terrazas</option><option>Toldos</option><option>Otra consulta</option></select></label>
     <div class="dosc"><label class="campo">¿Cuántas ventanas o puertas?<input data-k="Cantidad:" inputmode="numeric" placeholder="Ej: 3"></label>
     <label class="campo">Accionamiento<select data-k="Accionamiento:"><option value="">Todavía no sé</option><option>Manual</option><option>Motorizada</option></select></label></div>
-    <label class="campo">Color<select data-k="Color:"><option value="">Todavía no sé</option><option>Madera</option><option>Café</option><option>Grafito</option><option>Negro</option><option>Blanco</option></select></label>
-    <label class="campo">Comuna<input data-k="Comuna:" placeholder="Ej: La Reina"></label>
+    <div class="dosc"><label class="campo">Color<select data-k="Color:"><option value="">Todavía no sé</option><option>Madera</option><option>Café</option><option>Grafito</option><option>Negro</option><option>Blanco</option></select></label>
+    <label class="campo">Comuna<input data-k="Comuna:" placeholder="Ej: La Reina"></label></div>
     <p class="aviso-f" role="status"></p>
-    <button class="btn-f" type="submit"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.6 8.6 0 1 1 8 19.4z"/><path d="M9 8.6c.2 2.9 2.6 5.4 5.6 5.8l1-1.1 1.9.8-.4 1.8c-4.6.4-8.8-3.6-8.5-8.3l1.8-.4.8 1.9z"/></svg>Pedir cotización</button>
+    <button class="btn btn-p" type="submit"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.6 8.6 0 1 1 8 19.4z"/><path d="M9 8.6c.2 2.9 2.6 5.4 5.6 5.8l1-1.1 1.9.8-.4 1.8c-4.6.4-8.8-3.6-8.5-8.3l1.8-.4.8 1.9z"/></svg>Pedir cotización por WhatsApp</button>
     <small>Esta página no guarda sus datos.</small>
   </form>
 </div></section>
 
-<section id="preguntas"><div class="wrap faqwrap">
-  <div class="reveal"><span class="eti">Preguntas frecuentes</span><h2>Antes de <span>cotizar</span></h2></div>
-  <div class="reveal"><details class="faq" open><summary>¿Cuánto cuesta una persiana exterior?</summary><p>Depende de las medidas de la ventana, de cuántas son y de si la quiere manual o motorizada. Escríbanos y le cotizamos.</p></details><details class="faq"><summary>¿Las instalan con motor?</summary><p>Sí, además de las manuales instalamos persianas motorizadas con interruptor.</p></details><details class="faq"><summary>¿En qué colores?</summary><p>Hemos instalado persianas color madera, café, grafito, negro y blanco. Pregúntenos al cotizar por el que le guste.</p></details><details class="faq"><summary>¿Qué días atienden?</summary><p>De lunes a viernes, de 10:00 a 17:00.</p></details></div>
+<section class="faqs" id="preguntas" aria-labelledby="faq-t"><div class="wrap faqwrap">
+  <h2 id="faq-t" data-split>Antes de cotizar</h2>
+  <div><details class="faq" open><summary>¿Cuánto cuesta una persiana exterior?</summary><p>Depende de las medidas de la ventana, de cuántas son y de si la quiere manual o motorizada. Escríbanos y le cotizamos.</p></details><details class="faq"><summary>¿Las instalan con motor?</summary><p>Sí, además de las manuales instalamos persianas motorizadas con interruptor.</p></details><details class="faq"><summary>¿En qué colores?</summary><p>Hemos instalado persianas color madera, café, grafito, negro y blanco. Pregúntenos al cotizar por el que le guste.</p></details><details class="faq"><summary>¿Qué días atienden?</summary><p>De lunes a viernes, de 10:00 a 17:00.</p></details></div>
 </div></section>
 </main>
-<footer><div class="wrap"><span>Altosol Persianas · Persianas exteriores · Peñalolén</span><span><a href="tel:+56997642209">+56 9 9764 2209</a> · &copy; <span id="y"></span></span></div></footer>
-<script>
-document.querySelectorAll('form[data-cot]').forEach(function(f){f.addEventListener('submit',function(ev){ev.preventDefault();
-  var m=f.getAttribute('data-msg'),av=f.querySelector('.aviso-f'),falta=null;
-  f.querySelectorAll('[data-k]').forEach(function(el){var v=el.value.trim();if(!v&&el.hasAttribute('data-req')&&!falta)falta=el;if(v)m+=' '+el.getAttribute('data-k')+' '+v+'.'});
-  if(falta){av.textContent=f.getAttribute('data-falta');falta.focus();return}av.textContent='';
-  window.open('https://wa.me/'+f.getAttribute('data-wa')+'?text='+encodeURIComponent(m),'_blank','noopener')})});
-</script><script>
-(function(){var v=document.getElementById('mVista'),cap=document.getElementById('mCap');if(!v)return;
-  document.querySelectorAll('[data-color]').forEach(function(b){b.addEventListener('click',function(){
-    document.querySelectorAll('[data-color]').forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');
-    v.src=b.getAttribute('data-src');v.alt=b.getAttribute('data-alt');cap.textContent=b.getAttribute('data-color');})});
-})();
-</script>
+
+<footer><div class="wrap">
+  <div class="pie-fila"><span>Persianas exteriores de aluminio, manuales o motorizadas. Peñalolén.</span><span><a href="tel:+56997642209">+56 9 9764 2209</a></span></div>
+  <p class="gigante" aria-hidden="true" id="gigante">Altosol</p>
+  <div class="pie-chico"><span>Altosol Persianas &copy; <span id="y"></span></span><span>Lunes a viernes, 10:00 a 17:00</span></div>
+</div></footer>
+
 <div class="barra-movil">
   <a class="ll" href="tel:+56997642209"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3.5h3.6l1.6 4.4-2.2 1.4a11 11 0 0 0 6.2 6.2l1.4-2.2 4.4 1.6V18.5A2 2 0 0 1 18 20.5 15.5 15.5 0 0 1 3.5 6 2 2 0 0 1 5 3.5z"/></svg>Llamar</a>
   <a class="wa" href="https://wa.me/56997642209?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quiero%20cotizar%20persianas%20exteriores" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.6 8.6 0 1 1 8 19.4z"/><path d="M9 8.6c.2 2.9 2.6 5.4 5.6 5.8l1-1.1 1.9.8-.4 1.8c-4.6.4-8.8-3.6-8.5-8.3l1.8-.4.8 1.9z"/></svg>WhatsApp</a>
 </div>
 <a class="fab" href="https://wa.me/56997642209?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quiero%20cotizar%20persianas%20exteriores" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.6 8.6 0 1 1 8 19.4z"/><path d="M9 8.6c.2 2.9 2.6 5.4 5.6 5.8l1-1.1 1.9.8-.4 1.8c-4.6.4-8.8-3.6-8.5-8.3l1.8-.4.8 1.9z"/></svg><span class="fab-txt">¿Cotizamos sus persianas?</span></a>
+<div class="grano" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"></div>
+
 <script>
-(function(){
-  var d=document.documentElement;
-  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visto');io.unobserve(x.target)}})},{rootMargin:'0px 0px -8% 0px'}):null;
-  document.querySelectorAll('.reveal').forEach(function(el){io?io.observe(el):el.classList.add('visto')});
-  var y=document.getElementById('y');if(y)y.textContent=new Date().getFullYear();
-  var f=document.getElementById('fWa');
-  if(f)f.addEventListener('submit',function(ev){ev.preventDefault();
-    var g=function(id){var el=document.getElementById(id);return el?el.value.trim():''};
-    var av=document.getElementById('fAviso');
-    if(!g('fServ')){av.textContent=f.getAttribute('data-falta');document.getElementById('fServ').focus();return}
-    av.textContent='';
-    var m=f.getAttribute('data-msg')+g('fServ')+'.';
-    if(g('fNombre'))m+=' Mi nombre es '+g('fNombre')+'.';
-    if(g('fCuando'))m+=' '+f.getAttribute('data-cuando')+' '+g('fCuando')+'.';
-    if(g('fMsg'))m+=' '+g('fMsg');
-    window.open('https://wa.me/'+f.getAttribute('data-wa')+'?text='+encodeURIComponent(m),'_blank','noopener');
-  });
-})();
+/* Cotizador: arma el mensaje y abre WhatsApp */
+document.querySelectorAll('form[data-cot]').forEach(function(f){f.addEventListener('submit',function(ev){ev.preventDefault();
+  var m=f.getAttribute('data-msg'),av=f.querySelector('.aviso-f'),falta=null;
+  f.querySelectorAll('[data-k]').forEach(function(el){var v=el.value.trim();if(!v&&el.hasAttribute('data-req')&&!falta)falta=el;if(v)m+=' '+el.getAttribute('data-k')+' '+v+'.'});
+  if(falta){av.textContent=f.getAttribute('data-falta');falta.focus();return}av.textContent='';
+  window.open('https://wa.me/'+f.getAttribute('data-wa')+'?text='+encodeURIComponent(m),'_blank','noopener')})});
+var y=document.getElementById('y');if(y)y.textContent=new Date().getFullYear();
 </script>
+
 <link rel="stylesheet" href="asistente.css">
 <script>window.ASISTENTE = {"negocio": "Altosol Persianas", "persona": "Altosol Persianas", "wa": "56997642209", "confirma": "las visitas se confirman", "boton": "¿Cotizamos sus persianas?", "saludo": "Hola, soy el asistente de Altosol Persianas. ¿Qué necesita?", "cuando": [{"t": "Lo antes posible", "m": "Lo necesito lo antes posible."}, {"t": "Este mes", "m": "Me gustaría hacerlo este mes."}, {"t": "Solo quiero cotizar", "m": "Por ahora solo quiero cotizar."}], "servicios": [{"n": "Persianas exteriores", "info": "Persianas de aluminio que se enrollan en una caja sobre la ventana: oscurecen, tapan el sol y dan privacidad.", "opts": [], "kw": "persiana|enrollable|aluminio|ventana|exterior"}, {"n": "Persianas motorizadas", "info": "Con motor e interruptor para subirlas y bajarlas con un botón.", "opts": [], "kw": "motor|motoriz|control|interruptor|automatic|electric"}, {"n": "Puertas y terrazas", "info": "Persianas para puertas, ventanales y terrazas, para cerrarlas de noche o cuando no está.", "opts": [], "kw": "terraza|quincho|puerta|ventanal"}, {"n": "Toldos", "info": "Consúltenos también por toldos para su terraza.", "opts": [], "kw": "toldo|sombra"}], "faq": [{"pri": true, "kw": "precio|valor|cuanto|costo|cobra|sale|presupuesto|cotiz", "r": "El valor depende de las medidas, de la cantidad de ventanas y de si la quiere manual o con motor. Cuénteme y le dejo el mensaje listo para cotizar."}, {"kw": "donde|direccion|ubicacion|comuna|zona|sector|llegan|van a|delivery|despacho", "r": "Estamos en Peñalolén. Las visitas se coordinan por WhatsApp según su comuna."}, {"kw": "horario|hora|abren|atienden|sabado|domingo|noche|urgencia|emergencia|24", "r": "Atendemos de lunes a viernes de 10:00 a 17:00."}, {"kw": "pago|transferencia|efectivo|tarjeta|boleta|factura|convenio|isapre|fonasa", "r": "Las formas de pago se confirman por WhatsApp."}, {"kw": "garantia|seguro|confianza|quien|experiencia|opiniones|resenas", "r": "Altosol tiene 5,0 en Google con 13 opiniones, todas de 5 estrellas. Sus clientes destacan la calidad, la organización y que cumplen los plazos."}]};</script>
 <script src="asistente.js" defer></script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js" defer></script>
+<script src="efectos.js" defer></script>
+
 <!-- contador de visitas -->
 <script>(function(){try{var L=localStorage,S=sessionStorage;if(location.search.indexOf('yo=1')>-1)L.setItem('soy-de-la-casa','1');
 if(L.getItem('soy-de-la-casa')||S.getItem('visita-contada'))return;S.setItem('visita-contada','1');
