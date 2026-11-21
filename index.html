@@ -16,7 +16,7 @@
 <link rel="icon" href="assets/icono.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400..600&family=Geist:wght@300..600&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/p-hero.jpg">
+<link rel="preload" as="image" type="image/webp" imagesrcset="assets/hd/hero-760.webp 760w, assets/hd/hero-1094.webp 1094w" imagesizes="(max-width:900px) 100vw, 50vw">
 <script>document.documentElement.classList.add('js');setTimeout(function(){document.documentElement.classList.add('listo')},2600)</script>
 <!--
   Versión premium (20-11-2026). Plan:
@@ -25,12 +25,14 @@
   - Momento propio: la persiana ES el efecto. Portada: la persiana sube al cargar y baja con el scroll.
     Sección «Luz»: el scroll baja la persiana de una ventana y la luz del piso se achica hasta oscurecer la pieza (día / noche).
     Sección «Motor»: un interruptor que se puede tocar mueve una persiana.
+  v2 (20-11-2026): fotos HD (WebP + JPG con srcset), despiece en SVG, dónde se instala, comparador abierta/cerrada,
+    proceso en 4 pasos, cierre con persiana que sube, cortinas entre secciones, barra de progreso.
 -->
 <style>
 @property --rendija{syntax:'<length>';inherits:true;initial-value:0px}
 :root{
   --basalto:#171513;--grafito:#24211e;--grafito-2:#2f2b27;--marfil:#ece6dc;--niebla:#a59c90;--piedra:#d8d2c7;--tinta:#1c1916;--tinta-suave:#4f4840;
-  --champana:#c6a777;--champana-claro:#dcc49b;--bronce:#7a5c33;--linea:rgba(236,230,220,.14);--linea-osc:rgba(28,25,22,.16);
+  --champana:#c6a777;--champana-claro:#dcc49b;--bronce:#7a5c33;--cobre:#b5825a;--acero:#8f979c;--arena:#ebe5da;--linea:rgba(236,230,220,.14);--linea-osc:rgba(28,25,22,.16);
   --serif:"Bodoni Moda",ui-serif,Georgia,serif;--sans:"Geist",system-ui,-apple-system,"Segoe UI",sans-serif;
   --ease:cubic-bezier(.16,1,.3,1);--alto-nav:72px;
   /* variables que lee el asistente (asistente.css) */
@@ -39,7 +41,8 @@
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;overflow-x:clip;scrollbar-color:#4a443d var(--basalto)}
 body{margin:0;overflow-x:clip;background:var(--basalto);color:var(--marfil);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
-img{max-width:100%;display:block}a{color:inherit}button,input,select,textarea{font:inherit;color:inherit}
+img{max-width:100%;display:block}picture{display:contents}
+h1,h2,h3,.gigante,.nota .num{font-kerning:normal;text-rendering:optimizeLegibility}a{color:inherit}button,input,select,textarea{font:inherit;color:inherit}
 ::selection{background:var(--champana);color:var(--basalto)}
 :focus-visible{outline:2px solid var(--champana);outline-offset:3px}
 .i{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
@@ -174,7 +177,8 @@ p{margin:0}
   .luz h2{font-size:clamp(1.9rem,8vw,2.6rem)}
   .pasos{margin-top:14px}
   .js .pasos li{grid-area:1/1;opacity:0;border-bottom:1px solid var(--linea);grid-template-columns:1fr}
-  .js .pasos li.activo{opacity:1}
+  .js .pasos li.activo{opacity:1;transition:opacity .35s ease .2s}
+  .js .pasos li:not(.activo){transition:opacity .15s ease}
   .pasos li{padding:12px 0}
   .luz-ctrl{margin-top:12px}
   .escena{aspect-ratio:5/4;order:2}
@@ -234,7 +238,7 @@ p{margin:0}
 .lista{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:12px}
 .lista li{display:flex;gap:12px;align-items:flex-start;color:var(--marfil)}.lista .i{color:var(--champana);margin-top:3px}
 .prueba{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:22px;align-items:center;margin-top:36px;padding-top:30px;border-top:1px solid var(--linea)}
-.prueba-ventana{position:relative;aspect-ratio:4/3;overflow:hidden;border:5px solid #8a837a;background:#6d7d8c url(assets/p-casa-blanca.jpg) center 30%/cover no-repeat}
+.prueba-ventana{position:relative;aspect-ratio:4/3;overflow:hidden;border:5px solid #8a837a;background:#6d7d8c url(assets/hd/comp-abierta-1000.webp) 45% 55%/cover no-repeat}
 .prueba-ventana::after{content:"";position:absolute;top:0;bottom:0;left:50%;width:4px;background:#8a837a}
 .persiana4{--q:.55;position:absolute;inset:0;z-index:2;transform:translateY(calc((var(--q) - 1) * 100%))}
 .persiana4 .lamas{position:absolute;inset:0 0 8px;--paso:12px;--rendija:0px}
@@ -339,13 +343,129 @@ footer{background:#100f0d;color:var(--niebla);padding:70px 0 34px;overflow:hidde
 .cursor.grande::before{transform:scale(1.7);background-color:rgba(198,167,119,.12)}
 @media (hover:none),(pointer:coarse){.cursor{display:none}}
 
+/* ===================== versión 2 ===================== */
+.progreso{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:linear-gradient(90deg,var(--champana),var(--cobre));transform-origin:left;transform:scaleX(0)}
+.top{transition:transform .5s var(--ease)}
+.top.oculto{transform:translateY(-100%)}
+.menu a.actual{color:var(--marfil)}.menu a.actual::after{transform:scaleX(1)}
+.cortina-in{position:absolute;left:0;right:0;top:0;height:min(60vh,520px);z-index:6;pointer-events:none;--c:0;--pc:46px;background:var(--cc,#171513);
+  -webkit-mask:repeating-linear-gradient(180deg,#000 0 calc(var(--c) * var(--pc)),transparent calc(var(--c) * var(--pc)) var(--pc));
+  mask:repeating-linear-gradient(180deg,#000 0 calc(var(--c) * var(--pc)),transparent calc(var(--c) * var(--pc)) var(--pc))}
+.kicker-num{font:500 .82rem/1 var(--sans);letter-spacing:.02em;color:var(--bronce);font-variant-numeric:tabular-nums}
+
+/* despiece */
+.despiece{background:var(--basalto);border-top:1px solid var(--linea)}
+.des-pin{min-height:100svh;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,5vw,80px);align-items:center;padding-block:clamp(28px,6vh,72px)}
+.des-pin h2{font-size:clamp(2.2rem,4.6vw,4rem)}
+.partes{list-style:none;margin:26px 0 0;padding:0;display:grid;counter-reset:p}
+.partes li{display:grid;grid-template-columns:30px 1fr;gap:2px 14px;padding:13px 0;border-top:1px solid var(--linea);opacity:.42;transition:opacity .5s var(--ease)}
+.partes li:last-child{border-bottom:1px solid var(--linea)}
+.partes li.activo{opacity:1}
+.partes li::before{counter-increment:p;content:counter(p);grid-row:span 2;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font:600 .78rem/1 var(--sans);background:var(--champana);color:var(--basalto);margin-top:1px}
+.partes b{font:500 1.02rem/1.35 var(--sans);color:var(--marfil)}
+.partes span{color:var(--niebla);font-size:.95rem;max-width:46ch}
+.des-svg{display:block;width:100%;height:auto;max-height:80svh;overflow:visible}
+.des-svg .sombra{opacity:.55}
+.js .des-svg .mk{opacity:0}
+.des-svg text{font-family:var(--sans);font-weight:600}
+.des-nota{margin-top:16px;font-size:.85rem;color:var(--niebla)}
+@media (max-width:900px){
+  .des-pin{grid-template-columns:1fr;gap:6px;padding-block:18px;align-content:center}
+  .des-pin h2{font-size:clamp(1.9rem,8vw,2.6rem)}
+  .des-pin .lead{display:none}
+  .des-svg{max-height:42svh;order:2}
+  .partes{margin-top:12px}
+  .js .partes li{grid-area:1/1;opacity:0;border-bottom:1px solid var(--linea)}
+  .js .partes li.activo{opacity:1;transition:opacity .35s ease .2s}
+  .js .partes li:not(.activo){transition:opacity .15s ease}
+  .des-nota{display:none}
+}
+
+/* dónde se instala */
+.donde-sec{background:var(--grafito);padding:clamp(90px,14vh,150px) 0}
+.dgrid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,6vw,96px);align-items:center}
+.lugares{display:grid;margin-top:34px;border-top:1px solid var(--linea)}
+.lugar{display:block;width:100%;padding:22px 0;border:0;border-bottom:1px solid var(--linea);background:none;text-align:left;cursor:pointer;color:var(--niebla);transition:color .4s}
+.lugar b{display:block;font:400 clamp(2rem,3.6vw,3.1rem)/1.05 var(--serif);letter-spacing:-.02em;transition:transform .6s var(--ease),color .4s}
+.lugar p{max-height:0;overflow:hidden;opacity:0;transition:max-height .6s var(--ease),opacity .5s,margin .6s var(--ease);color:var(--niebla);max-width:40ch}
+.lugar[aria-pressed=true]{color:var(--marfil)}
+.lugar[aria-pressed=true] b{color:var(--champana-claro)}
+.lugar[aria-pressed=true] p{max-height:120px;opacity:1;margin-top:10px}
+@media (hover:hover){.lugar:hover b{transform:translateX(10px)}}
+.dfoto{position:relative;margin:0;aspect-ratio:4/5;overflow:hidden;border-radius:2px;background:#1b1916}
+.dfoto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.dfoto .nueva{clip-path:inset(0 0 100% 0)}
+.dfoto .marco-l{position:absolute;inset:14px;border:1px solid rgba(236,230,220,.35);pointer-events:none;z-index:3}
+@media (max-width:860px){.dgrid{grid-template-columns:1fr}.dfoto{order:2}.lugares{margin-top:22px}.lugar{padding:16px 0}}
+
+/* comparador */
+.comp-sec{background:var(--basalto);padding:clamp(90px,14vh,150px) 0}
+.comp{position:relative;margin:0 auto;width:min(100%,calc(80svh * 1900 / 1360));aspect-ratio:1900/1360;overflow:hidden;border-radius:2px;--x:50%;user-select:none;-webkit-user-select:none;background:#2a2622}
+.comp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.comp .arriba{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--x)) 0 0)}
+.comp .linea{position:absolute;top:0;bottom:0;left:var(--x);width:2px;margin-left:-1px;background:var(--marfil);box-shadow:0 0 18px rgba(0,0,0,.4);pointer-events:none}
+.comp .tirador{position:absolute;top:50%;left:var(--x);width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:var(--marfil);color:var(--basalto);display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(0,0,0,.6);pointer-events:none;transition:transform .3s var(--ease)}
+.comp:hover .tirador{transform:scale(1.08)}
+.comp .tirador svg{width:26px;height:26px}
+.comp input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;-webkit-appearance:none;appearance:none;touch-action:pan-y}
+.comp input:focus-visible ~ .tirador{outline:2px solid var(--champana);outline-offset:4px}
+.comp .et{position:absolute;top:16px;padding:8px 14px;background:rgba(23,21,19,.78);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);font-size:.85rem;color:var(--marfil);border-radius:2px;pointer-events:none}
+.comp .et-a{left:16px}.comp .et-b{right:16px}
+.comp-pie{margin-top:16px;color:var(--niebla);font-size:.9rem}
+
+/* proceso */
+.proceso{background:var(--arena);color:var(--tinta);padding:clamp(90px,14vh,150px) 0}
+.proceso .lead{color:var(--tinta-suave)}
+.proceso :focus-visible{outline-color:var(--tinta)}
+.pasos4{list-style:none;margin:clamp(40px,7vh,72px) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;position:relative}
+.pasos4::before,.pasos4::after{content:"";position:absolute;left:0;right:0;top:27px;height:1px;background:rgba(28,25,22,.18)}
+.pasos4::after{background:var(--tinta);transform-origin:left;transform:scaleX(var(--r,1))}
+.pasos4 li{position:relative;display:grid;gap:14px;align-content:start}
+.pasos4 .ico{position:relative;z-index:1;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--arena);border:1px solid var(--tinta);color:var(--tinta);transition:background .5s var(--ease),color .5s,transform .5s var(--ease)}
+.pasos4 li.on .ico{background:var(--tinta);color:var(--champana-claro);transform:scale(1.06)}
+.pasos4 .ico svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.pasos4 h3{font-size:clamp(1.5rem,2.2vw,1.9rem)}
+.pasos4 p{color:var(--tinta-suave);max-width:30ch}
+@media (max-width:860px){
+  .pasos4{grid-template-columns:1fr;gap:36px;padding-left:76px}
+  .pasos4::before,.pasos4::after{left:27px;right:auto;top:0;bottom:0;width:1px;height:auto}
+  .pasos4::after{transform-origin:top;transform:scaleY(var(--r,1))}
+  .pasos4 .ico{position:absolute;left:-76px;top:-6px}
+}
+
+/* cierre */
+.cierre{position:relative;min-height:100svh;display:grid;place-items:center;overflow:hidden;background:radial-gradient(75% 65% at 50% 62%,#6b5130 0%,#2c2219 48%,#141210 100%);text-align:center;padding:120px 0}
+.cierre::before{content:"";position:absolute;inset:0;background:radial-gradient(42% 36% at 50% 60%,rgba(255,214,150,.42),transparent 70%)}
+.cierre .persiana-cierre{position:absolute;inset:0;z-index:1}
+html:not(.js) .cierre .persiana-cierre{transform:translateY(-101%)}
+.cierre .persiana-cierre .lamas{position:absolute;inset:0 0 16px;--paso:34px;--rendija:4px}
+.cierre .persiana-cierre .contera{height:16px}
+.cierre .wrap{position:relative;z-index:2}
+.cierre h2{font-size:clamp(3rem,9vw,8rem);line-height:.92;letter-spacing:-.035em;max-width:12ch;margin-inline:auto;text-shadow:0 4px 40px rgba(0,0,0,.55)}
+.cierre .lead{margin:26px auto 34px;color:#e2d9cc;text-align:center;font-size:1.1rem;text-shadow:0 2px 20px rgba(0,0,0,.6)}
+.cierre .acciones{justify-content:center}
+@media (max-width:600px){.cierre .acciones .btn{flex:1 1 100%}}
+
+/* detalles finos */
+.faq[open] p{animation:aparece .6s var(--ease)}
+@keyframes aparece{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.faq summary{transition:color .3s}
+@media (hover:hover){.faq summary:hover{color:var(--champana-claro)}}
+.campo input:focus::placeholder{color:transparent}
+.cita blockquote::before{content:"";display:block;width:34px;height:1px;background:var(--champana);margin-bottom:18px}
+@media (prefers-reduced-motion:reduce){
+  .js .partes li{opacity:1}
+  .cortina-in{display:none}
+  .cierre .persiana-cierre{transform:translateY(-101%)}
+}
+
 /* ---------- textos por líneas: ocultos solo mientras carga la animación ---------- */
 @media (prefers-reduced-motion:no-preference){
   .js:not(.listo) [data-split]{visibility:hidden}
   .js:not(.listo) [data-entra]{opacity:0}
 }
 @media (prefers-reduced-motion:reduce){
-  .js .pasos li{opacity:1}
+  .js .pasos li,.js .partes li{opacity:1;grid-area:auto}
   .persiana{transform:translateY(-101%)}
 }
 </style>
@@ -357,9 +477,9 @@ footer{background:#100f0d;color:var(--niebla);padding:70px 0 34px;overflow:hidde
 
 <header class="top"><div class="wrap nav">
   <a class="marca" href="#inicio" aria-label="Altosol Persianas, inicio"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="4" y="4" width="24" height="5"/><path d="M5.5 9v19h21V9"/><path d="M5.5 12.5h21M5.5 16h21M5.5 19.5h21M5.5 23h21" opacity=".7"/></svg><b>Altosol</b></a>
-  <nav class="menu" aria-label="Secciones"><a href="#luz">La luz</a><a href="#persianas">Persianas</a><a href="#colores">Colores</a><a href="#motor">Motorizadas</a><a href="#obras">Obras</a><a href="#opiniones">Opiniones</a></nav>
+  <nav class="menu" aria-label="Secciones"><a href="#luz">La luz</a><a href="#despiece">Por dentro</a><a href="#colores">Colores</a><a href="#motor">Motorizadas</a><a href="#obras">Obras</a><a href="#proceso">Cómo trabajamos</a></nav>
   <a class="btn btn-c" href="#cotizar" data-magnet>Cotizar</a>
-</div></header>
+</div><span class="progreso" aria-hidden="true"></span></header>
 
 <main id="inicio">
 <section class="hero" aria-label="Portada">
@@ -370,7 +490,7 @@ footer{background:#100f0d;color:var(--niebla);padding:70px 0 34px;overflow:hidde
     <ul class="datos" data-entra><li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z"/></svg><span><b>5,0</b> en Google</span></li><li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19.5c.6-3.3 2.8-5 5.5-5s4.9 1.7 5.5 5"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.6c2.4-.3 4.4 1.2 5 4"/></svg><span><b>13</b> opiniones</span></li><li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><span>Lun a vie, 10 a 17 h</span></li></ul>
   </div>
   <div class="hero-win">
-    <img src="assets/p-hero.jpg" alt="Persiana exterior negra instalada en una terraza con muro de piedra y techo de madera" width="1094" height="1400" fetchpriority="high">
+    <picture><source type="image/webp" srcset="assets/hd/hero-760.webp 760w, assets/hd/hero-1094.webp 1094w" sizes="(max-width:900px) 100vw, 50vw"><img src="assets/hd/hero-760.jpg" width="760" height="972" alt="Persiana exterior negra instalada en una terraza con muro de piedra y techo de madera" fetchpriority="high" decoding="async"></picture>
     <div class="cajon" aria-hidden="true"></div>
     <div class="persiana-mov" aria-hidden="true"><div class="persiana"><div class="lamas"></div><div class="contera"></div></div></div>
   </div>
@@ -401,18 +521,100 @@ footer{background:#100f0d;color:var(--niebla);padding:70px 0 34px;overflow:hidde
 <section class="prod" id="persianas" aria-labelledby="prod-t"><div class="wrap">
   <div class="cab"><h2 id="prod-t" data-split>Lo que instalamos</h2><p class="lead">Van por fuera de la ventana: tapan el sol antes de que entre, oscurecen la pieza y dan privacidad. Elija qué necesita y le dejamos el mensaje listo.</p></div>
   <div class="filas">
-    <a class="fila" data-vista="assets/p-grafito.jpg" href="https://wa.me/56997642209?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quiero%20cotizar%20persianas%20exteriores." target="_blank" rel="noopener"><h3>Persianas exteriores</h3><p>De aluminio, se enrollan en una caja sobre la ventana: oscurecen, tapan el sol y dan privacidad.</p><span class="ir">Cotizar <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-    <a class="fila" data-vista="assets/control.jpg" href="https://wa.me/56997642209?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quiero%20cotizar%20persianas%20motorizadas." target="_blank" rel="noopener"><h3>Persianas motorizadas</h3><p>Con motor e interruptor para subirlas y bajarlas con un botón.</p><span class="ir">Cotizar <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-    <a class="fila" data-vista="assets/p-terraza.jpg" href="https://wa.me/56997642209?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quiero%20cotizar%20puertas%20y%20terrazas." target="_blank" rel="noopener"><h3>Puertas y terrazas</h3><p>Para puertas, ventanales y terrazas, para cerrarlas de noche o cuando no está.</p><span class="ir">Cotizar <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="fila" data-vista="assets/hd/grafito-v-800.webp" href="https://wa.me/56997642209?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quiero%20cotizar%20persianas%20exteriores." target="_blank" rel="noopener"><h3>Persianas exteriores</h3><p>De aluminio, se enrollan en una caja sobre la ventana: oscurecen, tapan el sol y dan privacidad.</p><span class="ir">Cotizar <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="fila" data-vista="assets/hd/control-720.webp" href="https://wa.me/56997642209?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quiero%20cotizar%20persianas%20motorizadas." target="_blank" rel="noopener"><h3>Persianas motorizadas</h3><p>Con motor e interruptor para subirlas y bajarlas con un botón.</p><span class="ir">Cotizar <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="fila" data-vista="assets/hd/terraza-v-720.webp" href="https://wa.me/56997642209?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quiero%20cotizar%20puertas%20y%20terrazas." target="_blank" rel="noopener"><h3>Puertas y terrazas</h3><p>Para puertas, ventanales y terrazas, para cerrarlas de noche o cuando no está.</p><span class="ir">Cotizar <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
     <a class="fila" href="https://wa.me/56997642209?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quiero%20cotizar%20toldos." target="_blank" rel="noopener"><h3>Toldos</h3><p>Consúltenos también por toldos para su terraza.</p><span class="ir">Consultar <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
   </div>
-  <div class="vista" aria-hidden="true"><img alt="" src="assets/p-grafito.jpg"></div>
+  <div class="vista" aria-hidden="true"><img alt="" src="assets/hd/grafito-v-800.webp"></div>
 </div></section>
 
-<section class="colores" id="colores" aria-labelledby="col-t"><div class="wrap mgrid">
+<section class="despiece" id="despiece" aria-labelledby="des-t"><div class="wrap des-pin">
+  <div>
+    <h2 id="des-t" data-split>Por dentro de una persiana exterior</h2>
+    <p class="lead" style="margin-top:18px">Así se arma una persiana enrollable, parte por parte.</p>
+    <ol class="partes">
+      <li class="activo"><b>Cajón</b><span>Va sobre la ventana y guarda la persiana enrollada.</span></li>
+      <li><b>Eje y motor</b><span>La persiana se enrolla en un eje. En las motorizadas, el motor lo hace girar y usted lo maneja con un interruptor.</span></li>
+      <li><b>Láminas de aluminio</b><span>Unidas entre sí: bajan para tapar el sol y suben enrollándose.</span></li>
+      <li><b>Guías</b><span>Rieles a cada lado por donde corre la persiana.</span></li>
+      <li><b>Perfil final</b><span>La barra de abajo, que cierra contra el marco.</span></li>
+    </ol>
+    <p class="des-nota">Esquema general de una persiana exterior enrollable.</p>
+  </div>
+  <svg class="des-svg" id="desSvg" viewBox="130 -70 700 840" role="img" aria-labelledby="des-svg-t">
+    <title id="des-svg-t">Esquema de una persiana exterior enrollable separada en sus partes: cajón, eje con motor, láminas, guías y perfil final</title>
+    <defs>
+      <linearGradient id="gFront" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a39e95"/><stop offset=".5" stop-color="#7a756e"/><stop offset="1" stop-color="#57534d"/></linearGradient>
+      <linearGradient id="gTop" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#c2bcb2"/><stop offset="1" stop-color="#a7a197"/></linearGradient>
+      <linearGradient id="gSide" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4f4b45"/><stop offset="1" stop-color="#34312d"/></linearGradient>
+      <linearGradient id="gTubo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5f5b56"/><stop offset=".38" stop-color="#d2ccc2"/><stop offset=".62" stop-color="#8e8981"/><stop offset="1" stop-color="#3f3c38"/></linearGradient>
+      <linearGradient id="gMotor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3632"/><stop offset=".4" stop-color="#c6a777"/><stop offset=".65" stop-color="#7a6040"/><stop offset="1" stop-color="#241f19"/></linearGradient>
+      <radialGradient id="gSombra"><stop offset="0" stop-color="#000" stop-opacity=".7"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+      <pattern id="pLam" width="12" height="22" patternUnits="userSpaceOnUse"><rect width="12" height="22" fill="#6e6a63"/><rect width="12" height="5" fill="#aaa59c"/><rect y="5" width="12" height="6" fill="#8a857e"/><rect y="17" width="12" height="3" fill="#45413c"/><rect y="20" width="12" height="2" fill="#211f1c"/></pattern>
+    </defs>
+    <ellipse class="sombra" cx="470" cy="760" rx="300" ry="26" fill="url(#gSombra)"/>
+    <g id="pEje">
+      <rect x="292" y="168" width="330" height="40" rx="20" fill="url(#gTubo)"/>
+      <rect x="292" y="168" width="118" height="40" rx="20" fill="url(#gMotor)"/>
+      <ellipse cx="622" cy="188" rx="9" ry="20" fill="#3b3834"/>
+      <path d="M292 188c-34 0-40 34-70 40" fill="none" stroke="#c6a777" stroke-width="3" stroke-linecap="round"/>
+      <g class="mk"><circle cx="352" cy="140" r="17" fill="#c6a777"/><text x="352" y="146" text-anchor="middle" font-size="17" fill="#171513">2</text></g>
+    </g>
+    <g id="pCor">
+      <polygon points="284,246 616,246 652,224 320,224" fill="#8d887f"/>
+      <rect x="284" y="246" width="332" height="380" fill="url(#pLam)"/>
+      <g class="mk"><circle cx="450" cy="436" r="17" fill="#c6a777"/><text x="450" y="442" text-anchor="middle" font-size="17" fill="#171513">3</text></g>
+    </g>
+    <g id="pGi">
+      <polygon points="282,232 318,210 318,620 282,642" fill="url(#gSide)"/>
+      <polygon points="262,232 282,232 318,210 298,210" fill="url(#gTop)"/>
+      <rect x="262" y="232" width="20" height="410" fill="url(#gFront)"/><rect x="270" y="232" width="4" height="410" fill="#2a2724"/>
+      <g class="mk"><circle cx="228" cy="440" r="17" fill="#c6a777"/><text x="228" y="446" text-anchor="middle" font-size="17" fill="#171513">4</text></g>
+    </g>
+    <g id="pGd">
+      <polygon points="638,232 674,210 674,620 638,642" fill="url(#gSide)"/>
+      <polygon points="618,232 638,232 674,210 654,210" fill="url(#gTop)"/>
+      <rect x="618" y="232" width="20" height="410" fill="url(#gFront)"/><rect x="626" y="232" width="4" height="410" fill="#2a2724"/>
+      <g class="mk"><circle cx="710" cy="440" r="17" fill="#c6a777"/><text x="710" y="446" text-anchor="middle" font-size="17" fill="#171513">4</text></g>
+    </g>
+    <g id="pCon">
+      <polygon points="278,626 622,626 658,604 314,604" fill="url(#gTop)"/>
+      <rect x="278" y="626" width="344" height="16" fill="url(#gFront)"/><rect x="278" y="638" width="344" height="4" fill="#2a2724"/>
+      <g class="mk"><circle cx="450" cy="682" r="17" fill="#c6a777"/><text x="450" y="688" text-anchor="middle" font-size="17" fill="#171513">5</text></g>
+    </g>
+    <g id="pCaj">
+      <polygon points="654,150 690,128 690,210 654,232" fill="url(#gSide)"/>
+      <polygon points="246,150 654,150 690,128 282,128" fill="url(#gTop)"/>
+      <rect x="246" y="150" width="408" height="82" fill="url(#gFront)"/>
+      <rect x="246" y="226" width="408" height="6" fill="#3a3733"/><rect x="246" y="150" width="408" height="2" fill="#c6a777" opacity=".7"/>
+      <g class="mk"><circle cx="450" cy="96" r="17" fill="#c6a777"/><text x="450" y="102" text-anchor="middle" font-size="17" fill="#171513">1</text></g>
+    </g>
+  </svg>
+</div></section>
+
+
+<section class="donde-sec" id="donde" aria-labelledby="don-t"><div class="wrap dgrid">
+  <div>
+    <h2 id="don-t" data-split>Dónde se instala</h2>
+    <div class="lugares" role="group" aria-label="Lugares de la casa">
+      <button type="button" class="lugar" aria-pressed="true" data-src="assets/hd/grafito-v-800.webp" data-srcset="assets/hd/grafito-v-800.webp 800w, assets/hd/grafito-v-1424.webp 1424w" data-alt="Persianas exteriores grafito en las ventanas del segundo piso de una casa"><b>Ventanas</b><p>Por fuera de la ventana: tapan el sol antes de que entre y oscurecen la pieza.</p></button>
+      <button type="button" class="lugar" aria-pressed="false" data-src="assets/hd/blanco-640.webp" data-srcset="assets/hd/blanco-640.webp 640w, assets/hd/blanco-900.webp 900w" data-alt="Persiana exterior blanca cerrando el acceso a una terraza"><b>Puertas</b><p>En puertas y accesos, para cerrarlas de noche o cuando no está.</p></button>
+      <button type="button" class="lugar" aria-pressed="false" data-src="assets/hd/terraza-v-720.webp" data-srcset="assets/hd/terraza-v-720.webp 720w, assets/hd/terraza-v-1072.webp 1072w" data-alt="Persiana color madera a media altura en una terraza con sol"><b>Terrazas</b><p>En ventanales y terrazas, manuales o con motor.</p></button>
+    </div>
+  </div>
+  <figure class="dfoto" id="dFoto">
+    <img class="base" src="assets/hd/grafito-v-800.webp" srcset="assets/hd/grafito-v-800.webp 800w, assets/hd/grafito-v-1424.webp 1424w" sizes="(max-width:860px) 100vw, 55vw" alt="Persianas exteriores grafito en las ventanas del segundo piso de una casa" loading="lazy" decoding="async">
+    <img class="nueva" src="assets/hd/grafito-v-800.webp" sizes="(max-width:860px) 100vw, 55vw" alt="" aria-hidden="true">
+    <span class="marco-l" aria-hidden="true"></span>
+  </figure>
+</div></section>
+
+
+<section class="colores" id="colores" aria-labelledby="col-t" data-cortina="#24211e"><div class="wrap mgrid">
   <figure class="mfoto" id="mFoto">
-    <img class="base" src="assets/madera.jpg" alt="Persiana exterior color madera en una puerta junto a un muro de ladrillo">
-    <img class="nueva" src="assets/madera.jpg" alt="" aria-hidden="true">
+    <img class="base" src="assets/hd/madera-720.webp" srcset="assets/hd/madera-720.webp 720w, assets/hd/madera-1080.webp 1080w" sizes="(max-width:860px) 100vw, 50vw" alt="Persiana exterior color madera en una puerta junto a un muro de ladrillo" loading="lazy" decoding="async">
+    <img class="nueva" src="assets/hd/madera-720.webp" sizes="(max-width:860px) 100vw, 50vw" alt="" aria-hidden="true">
     <div class="barrido" aria-hidden="true"><div class="lamas m-grafito"></div></div>
   </figure>
   <div>
@@ -420,17 +622,17 @@ footer{background:#100f0d;color:var(--niebla);padding:70px 0 34px;overflow:hidde
     <p class="lead" style="margin-top:22px">Son persianas que ya instalamos. Toque un color y la persiana baja sobre la foto de una casa de verdad.</p>
     <div class="mnombre" aria-live="polite"><b id="mNombre"><span>Madera</span></b><small id="mTono">tono miel</small></div>
     <div class="chips" role="group" aria-label="Colores de persiana">
-      <button type="button" class="chip" data-color="Madera" data-tono="tono miel" data-src="assets/madera.jpg" data-alt="Persiana exterior color madera en una puerta junto a un muro de ladrillo" aria-pressed="true"><span class="m lamas m-madera"></span><span>Madera</span></button>
-      <button type="button" class="chip" data-color="Café" data-tono="café oscuro" data-src="assets/cafe.jpg" data-alt="Ventana con persiana exterior café a media altura" aria-pressed="false"><span class="m lamas m-cafe"></span><span>Café</span></button>
-      <button type="button" class="chip" data-color="Grafito" data-tono="gris oscuro" data-src="assets/grafito.jpg" data-alt="Casa de dos pisos con persianas exteriores color grafito" aria-pressed="false"><span class="m lamas m-grafito"></span><span>Grafito</span></button>
-      <button type="button" class="chip" data-color="Negro" data-tono="negro mate" data-src="assets/negro.jpg" data-alt="Persiana exterior negra en una terraza" aria-pressed="false"><span class="m lamas m-negro"></span><span>Negro</span></button>
-      <button type="button" class="chip" data-color="Blanco" data-tono="claro" data-src="assets/blanco.jpg" data-alt="Persiana exterior blanca cerrando una terraza" aria-pressed="false"><span class="m lamas m-blanco"></span><span>Blanco</span></button>
+      <button type="button" class="chip" data-color="Madera" data-tono="tono miel" data-src="assets/hd/madera-720.webp" data-srcset="assets/hd/madera-720.webp 720w, assets/hd/madera-1080.webp 1080w" data-alt="Persiana exterior color madera en una puerta junto a un muro de ladrillo" aria-pressed="true"><span class="m lamas m-madera"></span><span>Madera</span></button>
+      <button type="button" class="chip" data-color="Café" data-tono="café oscuro" data-src="assets/hd/cafe-720.webp" data-srcset="assets/hd/cafe-720.webp 720w" data-alt="Ventana con persiana exterior café a media altura" aria-pressed="false"><span class="m lamas m-cafe"></span><span>Café</span></button>
+      <button type="button" class="chip" data-color="Grafito" data-tono="gris oscuro" data-src="assets/hd/grafito-v-800.webp" data-srcset="assets/hd/grafito-v-800.webp 800w, assets/hd/grafito-v-1424.webp 1424w" data-alt="Casa de dos pisos con persianas exteriores color grafito" aria-pressed="false"><span class="m lamas m-grafito"></span><span>Grafito</span></button>
+      <button type="button" class="chip" data-color="Negro" data-tono="negro mate" data-src="assets/hd/negro-760.webp" data-srcset="assets/hd/negro-760.webp 760w, assets/hd/negro-1152.webp 1152w" data-alt="Persiana exterior negra en una terraza" aria-pressed="false"><span class="m lamas m-negro"></span><span>Negro</span></button>
+      <button type="button" class="chip" data-color="Blanco" data-tono="claro" data-src="assets/hd/blanco-640.webp" data-srcset="assets/hd/blanco-640.webp 640w, assets/hd/blanco-900.webp 900w" data-alt="Persiana exterior blanca cerrando una terraza" aria-pressed="false"><span class="m lamas m-blanco"></span><span>Blanco</span></button>
     </div>
   </div>
 </div></section>
 
 <section class="motor" id="motor" aria-labelledby="mot-t"><div class="wrap motor-grid">
-  <div class="marco"><img src="assets/control.jpg" alt="Interruptor inalámbrico para subir y bajar una persiana motorizada" loading="lazy" data-parallax></div>
+  <div class="marco"><picture><source type="image/webp" srcset="assets/hd/control-720.webp 720w, assets/hd/control-1072.webp 1072w" sizes="(max-width:860px) 100vw, 40vw"><img src="assets/hd/control-720.jpg" width="720" height="960" alt="Interruptor inalámbrico para subir y bajar una persiana motorizada" loading="lazy" decoding="async" data-parallax></picture></div>
   <div>
     <h2 id="mot-t" data-split>Suba y baje con un botón</h2>
     <p class="lead" style="margin-top:22px">Además de las manuales, instalamos persianas con motor que se manejan con un interruptor, sin tirar de la cinta.</p>
@@ -446,19 +648,43 @@ footer{background:#100f0d;color:var(--niebla);padding:70px 0 34px;overflow:hidde
   </div>
 </div></section>
 
+<section class="comp-sec" id="comparar" aria-labelledby="comp-t"><div class="wrap">
+  <div class="cab"><h2 id="comp-t" data-split>Abierta o cerrada</h2><p class="lead">Deslice para ver la misma ventana con la persiana arriba y abajo.</p></div>
+  <figure class="comp" id="comp">
+    <picture><source type="image/webp" srcset="assets/hd/comp-cerrada-1000.webp 1000w, assets/hd/comp-cerrada-1900.webp 1900w" sizes="(max-width:1240px) 100vw, 1240px"><img src="assets/hd/comp-cerrada-1000.jpg" width="1000" height="716" alt="La misma ventana con una persiana exterior grafito cerrada, en simulación" loading="lazy" decoding="async"></picture>
+    <div class="arriba"><picture><source type="image/webp" srcset="assets/hd/comp-abierta-1000.webp 1000w, assets/hd/comp-abierta-1900.webp 1900w" sizes="(max-width:1240px) 100vw, 1240px"><img src="assets/hd/comp-abierta-1000.jpg" width="1000" height="716" alt="Ventana del segundo piso de una casa, sin la persiana exterior bajada" loading="lazy" decoding="async"></picture></div>
+    <span class="et et-a" aria-hidden="true">Abierta</span><span class="et et-b" aria-hidden="true">Cerrada</span>
+    <span class="linea" aria-hidden="true"></span>
+    <input type="range" min="0" max="100" value="50" aria-label="Comparar la ventana abierta y cerrada">
+    <span class="tirador" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg></span>
+  </figure>
+  <p class="comp-pie">Foto real de una ventana; la persiana cerrada es una simulación en color grafito.</p>
+</div></section>
+
+
 <section class="obras" id="obras" aria-labelledby="obr-t">
-  <div class="wrap cab"><h2 id="obr-t" data-split>Instaladas en casas de clientes</h2><p class="lead">Ventanas, puertas y terrazas con persianas exteriores de Altosol. Fotos de su ficha de Google.</p></div>
+  <div class="wrap cab"><h2 id="obr-t" data-split>Instaladas en casas de clientes</h2><p class="lead">Ventanas, puertas y terrazas con persianas exteriores de Altosol, en fotos de su ficha de Google.</p></div>
   <div class="pista" id="pista" tabindex="0" aria-label="Fotos de trabajos, deslice para ver más">
-    <figure class="f-e"><img src="assets/p-moderna.jpg" alt="Casa moderna con persianas exteriores color café en el segundo piso" loading="lazy"></figure>
-    <figure class="f-a"><img src="assets/p-lamas.jpg" alt="Detalle de las láminas de una persiana color madera" loading="lazy"></figure>
-    <figure class="f-d"><img src="assets/p-grafito.jpg" alt="Fachada con persianas exteriores grafito en las ventanas del segundo piso" loading="lazy"></figure>
-    <figure class="f-b"><img src="assets/p-terraza.jpg" alt="Persiana color madera a media altura en una terraza con sol" loading="lazy"></figure>
-    <figure class="f-c"><img src="assets/g2.jpg" alt="Casa con persiana exterior en una ventana del segundo piso" loading="lazy"></figure>
-    <figure class="f-d"><img src="assets/p-cajon.jpg" alt="Detalle de la caja de una persiana café sobre una ventana" loading="lazy"></figure>
-    <figure class="f-a"><img src="assets/blanco.jpg" alt="Persiana exterior blanca cerrando una terraza" loading="lazy"></figure>
+    <figure class="f-c"><picture><source type="image/webp" srcset="assets/hd/lamas-702.webp 702w" sizes="(max-width:899px) 80vw, 45vw"><img src="assets/hd/lamas-702.jpg" width="702" height="768" alt="Detalle de las láminas de una persiana color madera" loading="lazy" decoding="async"></picture></figure>
+    <figure class="f-d"><picture><source type="image/webp" srcset="assets/hd/grafito-800.webp 800w, assets/hd/grafito-1424.webp 1424w" sizes="(max-width:899px) 80vw, 45vw"><img src="assets/hd/grafito-800.jpg" width="800" height="588" alt="Fachada con persianas exteriores grafito en las ventanas del segundo piso" loading="lazy" decoding="async"></picture></figure>
+    <figure class="f-a"><picture><source type="image/webp" srcset="assets/hd/terraza-v-720.webp 720w, assets/hd/terraza-v-1072.webp 1072w" sizes="(max-width:899px) 80vw, 45vw"><img src="assets/hd/terraza-v-720.jpg" width="720" height="900" alt="Persiana color madera a media altura en una terraza con sol" loading="lazy" decoding="async"></picture></figure>
+    <figure class="f-a"><picture><source type="image/webp" srcset="assets/hd/negro-760.webp 760w, assets/hd/negro-1152.webp 1152w" sizes="(max-width:899px) 80vw, 45vw"><img src="assets/hd/negro-760.jpg" width="760" height="950" alt="Persiana exterior negra en una terraza con muro de piedra" loading="lazy" decoding="async"></picture></figure>
+    <figure class="f-a"><picture><source type="image/webp" srcset="assets/hd/blanco-640.webp 640w, assets/hd/blanco-900.webp 900w" sizes="(max-width:899px) 80vw, 45vw"><img src="assets/hd/blanco-640.jpg" width="640" height="800" alt="Persiana exterior blanca cerrando una terraza" loading="lazy" decoding="async"></picture></figure>
+    <figure class="f-a"><picture><source type="image/webp" srcset="assets/hd/madera-720.webp 720w, assets/hd/madera-1080.webp 1080w" sizes="(max-width:899px) 80vw, 45vw"><img src="assets/hd/madera-720.jpg" width="720" height="900" alt="Persiana exterior color madera en una puerta junto a un muro de ladrillo" loading="lazy" decoding="async"></picture></figure>
   </div>
   <div class="wrap"><p class="desliza">Deslice para ver más trabajos.</p></div>
 </section>
+
+<section class="proceso" id="proceso" aria-labelledby="pro-t" data-cortina="#171513"><div class="wrap">
+  <div class="cab"><h2 id="pro-t" data-split>Cómo trabajamos</h2><p class="lead">De su mensaje a la persiana instalada, en cuatro pasos.</p></div>
+  <ol class="pasos4" id="pasos4">
+    <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.6 8.6 0 1 1 8 19.4z"/><path d="M9 8.6c.2 2.9 2.6 5.4 5.6 5.8l1-1.1 1.9.8-.4 1.8c-4.6.4-8.8-3.6-8.5-8.3l1.8-.4.8 1.9z"/></svg></span><span class="kicker-num">Paso 1</span><h3>Cotiza por WhatsApp</h3><p>Cuéntenos cuántas ventanas o puertas son y, si puede, mande fotos o medidas.</p></li>
+    <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="8" width="19" height="8" rx="1"/><path d="M6 8v3M9.5 8v4M13 8v3M16.5 8v4"/></svg></span><span class="kicker-num">Paso 2</span><h3>Medición</h3><p>Se coordina por WhatsApp la visita para medir cada ventana.</p></li>
+    <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 3.5h17v3.5h-17z"/><path d="M4.5 7v13.5h15V7"/><path d="M4.5 10h15M4.5 13h15M4.5 16h15"/></svg></span><span class="kicker-num">Paso 3</span><h3>Fabricación</h3><p>La persiana se hace a la medida de cada ventana, en el color que elija.</p></li>
+    <li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5l3-3 3 3-3 3"/><path d="M17.5 6.5L7 17"/><path d="M4 20l3-3"/><path d="M5.5 12.5l6 6"/></svg></span><span class="kicker-num">Paso 4</span><h3>Instalación</h3><p>Se instala por fuera de la ventana, manual o con motor.</p></li>
+  </ol>
+</div></section>
+
 
 <section class="opi" id="opiniones" aria-labelledby="opi-t"><div class="wrap">
   <h2 id="opi-t" class="sr">Opiniones en Google</h2>
@@ -496,8 +722,17 @@ footer{background:#100f0d;color:var(--niebla);padding:70px 0 34px;overflow:hidde
 
 <section class="faqs" id="preguntas" aria-labelledby="faq-t"><div class="wrap faqwrap">
   <h2 id="faq-t" data-split>Antes de cotizar</h2>
-  <div><details class="faq" open><summary>¿Cuánto cuesta una persiana exterior?</summary><p>Depende de las medidas de la ventana, de cuántas son y de si la quiere manual o motorizada. Escríbanos y le cotizamos.</p></details><details class="faq"><summary>¿Las instalan con motor?</summary><p>Sí, además de las manuales instalamos persianas motorizadas con interruptor.</p></details><details class="faq"><summary>¿En qué colores?</summary><p>Hemos instalado persianas color madera, café, grafito, negro y blanco. Pregúntenos al cotizar por el que le guste.</p></details><details class="faq"><summary>¿Qué días atienden?</summary><p>De lunes a viernes, de 10:00 a 17:00.</p></details></div>
+  <div><details class="faq" open><summary>¿Cuánto cuesta una persiana exterior?</summary><p>Depende de las medidas de la ventana, de cuántas son y de si la quiere manual o motorizada. Escríbanos y le cotizamos.</p></details><details class="faq"><summary>¿Las instalan con motor?</summary><p>Sí, además de las manuales instalamos persianas motorizadas con interruptor.</p></details><details class="faq"><summary>¿En qué colores?</summary><p>Hemos instalado persianas color madera, café, grafito, negro y blanco. Pregúntenos al cotizar por el que le guste.</p></details><details class="faq"><summary>¿Qué días atienden?</summary><p>De lunes a viernes, de 10:00 a 17:00.</p></details><details class="faq"><summary>¿Van a mi comuna?</summary><p>Estamos en Peñalolén. Las visitas se coordinan por WhatsApp según su comuna.</p></details><details class="faq"><summary>¿Cómo se paga?</summary><p>Las formas de pago se confirman por WhatsApp al cotizar.</p></details></div>
 </div></section>
+<section class="cierre" id="cierre" aria-labelledby="cie-t">
+  <div class="persiana-cierre" aria-hidden="true"><div class="lamas"></div><div class="contera"></div></div>
+  <div class="wrap">
+    <h2 id="cie-t" data-split>Deje entrar la luz que usted quiera.</h2>
+    <p class="lead">Escríbanos cuántas ventanas tiene y le cotizamos por WhatsApp. Atendemos de lunes a viernes, de 10:00 a 17:00.</p>
+    <div class="acciones"><a class="btn btn-p" data-magnet href="https://wa.me/56997642209?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quiero%20cotizar%20persianas%20exteriores" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.6 8.6 0 1 1 8 19.4z"/><path d="M9 8.6c.2 2.9 2.6 5.4 5.6 5.8l1-1.1 1.9.8-.4 1.8c-4.6.4-8.8-3.6-8.5-8.3l1.8-.4.8 1.9z"/></svg>Cotizar por WhatsApp</a><a class="btn btn-o" data-magnet href="tel:+56997642209"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3.5h3.6l1.6 4.4-2.2 1.4a11 11 0 0 0 6.2 6.2l1.4-2.2 4.4 1.6V18.5A2 2 0 0 1 18 20.5 15.5 15.5 0 0 1 3.5 6 2 2 0 0 1 5 3.5z"/></svg>Llamar al +56 9 9764 2209</a></div>
+  </div>
+</section>
+
 </main>
 
 <footer><div class="wrap">
