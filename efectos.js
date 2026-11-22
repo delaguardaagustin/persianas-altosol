@@ -170,7 +170,7 @@
   /* menú: sección actual */
   $$('.menu a').forEach(function (a) {
     var t = document.querySelector(a.getAttribute('href'));
-    if (t) ST.create({ trigger: t, start: 'top 45%', end: 'bottom 45%', onToggle: function (st) { a.classList.toggle('actual', st.isActive); } });
+    if (t) ST.create({ trigger: t, start: 'top 45%', end: 'bottom 45%', refreshPriority: -1, onToggle: function (st) { a.classList.toggle('actual', st.isActive); } });
   });
 
   /* Portada: al bajar, la persiana se cierra con el scroll (más rápido que la página, para que se vea) */
